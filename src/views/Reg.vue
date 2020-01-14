@@ -1,5 +1,7 @@
 <template>
-    <div id="app">
+    <div class="reg">
+        <!-- Button trigger modal -->
+        <!-- Modal -->
         <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -87,37 +89,15 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Майская Хрустальная</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navb" aria-controls="navb" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navb">
-                <ul class="navbar-nav mr-auto" id="nav">
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/">Главная</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/prizes">Призы</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/rules">Правила</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/winners">Победители</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#regModal">
-                            Ввести промокод
-                        </button>
-                    </li>
-                </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#regModal">
+                        Ввести промокод
+                    </button>
+                </div>
             </div>
-        </nav>
-        <router-view />
+        </div>
     </div>
 </template>
 <script>
@@ -178,7 +158,7 @@ export default {
                             localStorage.setItem('lkuid', response.data.lsuid);
                             localStorage.setItem('t', response.data.t);
                             self.noError = '<p class="alert alert-dismissible alert-success">Вы успешно зарегистрировались, проверьте электронную почту для активации личного кабинета.</p>'
-
+                            
                         } else {
                             self.errorsRegistr.push(response.data.error);
                         }
@@ -225,14 +205,5 @@ form {
 .errors {
     margin: 10px 0;
     padding: 0;
-}
-
-ul#nav li a {
-    font-weight: bold;
-    color: #222;
-}
-
-ul#nav li a.router-link-exact-active {
-    color: #42b983;
 }
 </style>
