@@ -4,7 +4,7 @@
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <input class="form-control form-control-lg" type="text" placeholder="Введите промокод" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
-					<button class="btn btn-lg btn-primary">Отправить</button>
+					<button class="btn btn-lg btn-primary" @click="enterPromoCode">Отправить</button>
                 </div>
             </div>
         </div>
@@ -23,19 +23,21 @@ export default {
     },
     methods: {
         enterPromoCode() {
-            axios('/users')
-        }
-    },
-    filters: {
-        capitalize: function(value) {
-            if (!value) return ''
-            value = value.toString()
-            return value.charAt(0).toUpperCase() + value.slice(1)
+            axios.post('https://denisdemchenko.ru/project/promo/api/enterPromo.php', {
+                    lkuid: localStorage.getItem('lkuid'),
+                    t: localStorage.getItem('t'),
+                    promo: this.promo
+                })
+                .then(function(response) {
+                    console.log(response)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
         }
     }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #promocode {
     text-align: center;

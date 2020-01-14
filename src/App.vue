@@ -74,13 +74,14 @@
                                 <form @submit.prevent="auth">
                                     <br>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Электронная почта" v-model="lkEmail">
+                                        <input type="tel" class="form-control" placeholder="Номер телефона" v-model="lkPhone" masked="true" v-mask="'+7 (###) ###-##-##'">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Пароль" v-model="lkPassword">
                                     </div>
                                     <button type="submit" class="btn btn-success">Войти в личный кабинет</button>
                                 </form>
+                                <div v-html="errorLk"></div>
                             </div>
                         </div>
                     </div>
@@ -133,11 +134,12 @@ export default {
             email: '',
             phone: '',
             password: '',
-            lkEmail: '',
+            lkPhone: '',
             lkPassword: '',
             errors: [],
             errorsRegistr: [],
-            noError: ''
+            noError: '',
+            errorLk: ''
         }
     },
     methods: {
@@ -175,7 +177,7 @@ export default {
                     })
                     .then(function(response) {
                         if (response.data.error.length == 0) {
-                            localStorage.setItem('lkuid', response.data.lsuid);
+                            localStorage.setItem('lkuid', response.data.lkuid);
                             localStorage.setItem('t', response.data.t);
                             self.noError = '<p class="alert alert-dismissible alert-success">Вы успешно зарегистрировались, проверьте электронную почту для активации личного кабинета.</p>'
 
@@ -189,13 +191,18 @@ export default {
             }
         },
         auth() {
-            axios.post('/user', {
-                    lkEmail: this.lkEmail,
+            var self = this
+            axios.post('https://denisdemchenko.ru/project/promo/api/auth.php', {
+                    lkPhone: this.lkPhone,
                     lkPassword: this.lkPassword
-
                 })
                 .then(function(response) {
-                    console.log(response)
+                    if (response.data.error.length == 0) {
+                        localStorage.setItem('lkuid', response.data.lkuid);
+                        localStorage.setItem('t', response.data.t);
+                    } else {
+                        self.errorLk.push('<p class="alert alert-dismissible alert-danger">' + response.data.error + '</p>');
+                    }
                 })
                 .catch(function(error) {
                     console.log(error)
