@@ -1,47 +1,29 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" placeholder="Введите промокод" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
-					<button class="btn btn-lg btn-primary" @click="enterPromoCode">Отправить</button>
+            <div class="col-md-12">
+                <div v-if="isLoggedIn">
+                    <EnterPromo />
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-const axios = require('axios')
 import { mask } from 'vue-the-mask'
+import EnterPromo from '@/components/EnterPromo.vue'
 export default {
     directives: { mask },
+    components: {
+        EnterPromo
+    },
     data() {
         return {
-            promo: '',
-            maxPromo: 10
+
         }
     },
-    methods: {
-        enterPromoCode() {
-            axios.post('https://denisdemchenko.ru/project/promo/api/enterPromo.php', {
-                    lkuid: localStorage.getItem('lkuid'),
-                    t: localStorage.getItem('t'),
-                    promo: this.promo
-                })
-                .then(function(response) {
-                    console.log(response)
-                })
-                .catch(function(error) {
-                    console.log(error)
-                });
-        }
-    }
+    computed: {
+        isLoggedIn: function() { return this.$store.getters.isLoggedIn }
+    },
 }
 </script>
-<style scoped>
-#promocode {
-    text-align: center;
-    font-size: 48px;
-    margin: 30px 0;
-}
-</style>
