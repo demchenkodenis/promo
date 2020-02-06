@@ -6,7 +6,10 @@ export default new Vuex.Store({
     state: {
         status: '',
         token: localStorage.getItem('t') || '',
-        user: {}
+        user: {},
+        errorRegistration: [],
+        countErrorRegistr: 0,
+        promoCodes: []
     },
     mutations: {
         auth_request(state) {
@@ -24,6 +27,13 @@ export default new Vuex.Store({
             state.status = ''
             state.token = ''
         },
+        errorRegistr(state, errReg) {
+            state.errorRegistration = []
+            state.errorRegistration.push(errReg)
+        },
+        countErrReg(state, countErrorRegistr) {
+            state.countErrorRegistr = countErrorRegistr
+        }
     },
     actions: {
         login({ commit }, user) {
@@ -52,13 +62,19 @@ export default new Vuex.Store({
                 commit('auth_request')
                 axios({ url: 'https://denisdemchenko.ru/project/promo/api/registration.php', data: user, method: 'POST' })
                     .then(resp => {
-                        const token = resp.data.t
-                        const user = resp.data.lkuid
-                        // localStorage.setItem('t', token)
-                        // localStorage.setItem('lkuid', user);
-                        axios.defaults.headers.common['Authorization'] = token
-                        commit('auth_success', token, user)
-                        resolve(resp)
+                        if (resp.data.error.length > 0) {
+                            console.log(resp.data.error)
+                            commit('errorRegistr', resp.data.error)
+                            commit('countErrReg', resp.data.error.length)
+                        } else {
+                            const token = resp.data.t
+                            const user = resp.data.lkuid
+                            localStorage.setItem('t', token)
+                            localStorage.setItem('lkuid', user);
+                            axios.defaults.headers.common['Authorization'] = token
+                            commit('auth_success', token, user)
+                            resolve(resp)
+                        }
                     })
                     .catch(err => {
                         commit('auth_error', err)
@@ -80,5 +96,7 @@ export default new Vuex.Store({
     getters: {
         isLoggedIn: state => !!state.token,
         authStatus: state => state.status,
+        errorRegistr: state => state.errorRegistration,
+        countErrReg: state => state.countErrorRegistr
     }
 })

@@ -15,25 +15,30 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Промокод</th>
-                            <th scope="col">Дата</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(code, index) in codes" :key="index">
-                            <td>{{ index + 1 }}</td>
-                            <td>{{ code.code }}</td>
-                            <td>{{ code.date_code }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div v-if="status == 0">
+                    <h3 class="alert alert-info">Проверьте электронную почту и активируйте аккаунт!</h3>
+                </div>
+                <div v-else>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Промокод</th>
+                                <th scope="col">Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(code, index) in codes" :key="index">
+                                <td>{{ index + 1 }}</td>
+                                <td>{{ code.code }}</td>
+                                <td>{{ code.date_code }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="status == 1">
             <div class="col-md-12">
                 <EnterPromo />
             </div>
@@ -54,6 +59,7 @@ export default {
             email: '',
             phone: '',
             dateReg: '',
+            status: '',
             codes: []
         }
     },
@@ -77,6 +83,7 @@ export default {
                 self.city = response.data.city
                 self.email = response.data.email
                 self.phone = response.data.phone
+                self.status = response.data.status
                 self.dateReg = response.data.date_registration
                 self.codes = response.data.codes
             })

@@ -4,7 +4,9 @@
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <input class="form-control form-control-lg" type="text" placeholder="Введите промокод" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
-                    <button class="btn btn-lg btn-primary" @click="enterPromoCode" :disabled="promo.length < 10">Отправить</button>
+                    <div v-if="promo.length == 10 && isPromoValid == true">
+                        <button class="btn btn-lg btn-primary" @click="enterPromoCode">Отправить</button>
+                    </div>
                 </div>
                 <h3>{{ msg }}</h3>
             </div>
@@ -13,6 +15,7 @@
 </template>
 <script>
 const axios = require('axios')
+const promoCheckRegex = /^[A-Z0-9]+$/;
 import { mask } from 'vue-the-mask'
 export default {
     directives: { mask },
@@ -39,7 +42,12 @@ export default {
                     console.log(error)
                 });
         }
-    }
+    },
+    computed: {
+        isPromoValid() {
+            return promoCheckRegex.test(this.promo)
+        },
+    },
 }
 </script>
 <style scoped>

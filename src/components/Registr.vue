@@ -7,11 +7,11 @@
                 <li v-for="error in errors" :key="error" class="alert alert-dismissible alert-danger">{{ error }}</li>
             </ul>
         </p>
-        <p v-if="errorsRegistr.length">
+        <p v-if="countErrReg > 0">
             <br>
             <b>Пожалуйста исправьте указанные ошибки:</b>
             <ul class="errors">
-                <li v-for="errorRegistr in errorsRegistr" :key="errorRegistr" class="alert alert-dismissible alert-danger">{{ errorRegistr }}</li>
+                <li v-for="errRegistr in errorRegistr" :key="errRegistr" class="alert alert-dismissible alert-danger">{{ errRegistr }}</li>
             </ul>
         </p>
         <form @submit.prevent="register">
@@ -53,8 +53,9 @@
 </template>
 <script>
 import { mask } from 'vue-the-mask'
+import { mapGetters } from 'vuex'
 export default {
-	directives: { mask },
+    directives: { mask },
     data() {
         return {
             name: '',
@@ -64,56 +65,47 @@ export default {
             phone: '',
             password: '',
             errors: [],
-            errorsRegistr: [],
             noError: '',
             is_admin: null,
         }
     },
     methods: {
         register() {
-            this.errorsRegistr = []
             this.errors = []
 
-            if (!this.name) {
-                this.errors.push('Требуется указать имя.');
-            }
-            if (!this.lastname) {
-                this.errors.push('Требуется указать фамилию.');
-            }
-            if (!this.city) {
-                this.errors.push('Требуется указать населенный пункт.');
-            }
-            if (!this.email) {
-                this.errors.push('Требуется указать e-mail.');
-            }
-            if (!this.phone) {
-                this.errors.push('Требуется указать телефон.');
-            }
-            if (!this.password) {
-                this.errors.push('Требуется указать пароль.');
-            }
+            if (!this.name) this.errors.push('Требуется указать имя.')
+            if (!this.lastname) this.errors.push('Требуется указать фамилию.')
+            if (!this.city) this.errors.push('Требуется указать населенный пункт.')
+            if (!this.email) this.errors.push('Требуется указать e-mail.')
+            if (!this.phone) this.errors.push('Требуется указать телефон.')
+            if (!this.password) this.errors.push('Требуется указать пароль.')
 
             if (this.name && this.lastname && this.city && this.email && this.phone && this.password) {
-
                 let data = {
                     name: this.name,
                     lastname: this.lastname,
                     city: this.city,
                     email: this.email,
                     phone: this.phone,
-                    password: this.password,
-                    is_admin: this.is_admin
+                    password: this.password
                 }
                 this.$store.dispatch('register', data)
-                    .then(() => this.$router.push('/checkMail'))
+                    .then(() => this.$router.push('/secure'))
                     .catch(err => console.log(err))
             }
         },
-    }
+
+    },
+    computed: mapGetters(['errorRegistr', 'countErrReg']),
 }
 </script>
 <style scoped>
-form{
+form {
     margin: 30px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
 </style>
