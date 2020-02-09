@@ -8,7 +8,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <h3 class="text-center start-action blue">До начала акции осталось:</h3>
+                            <h3 class="text-center start-action blue-color font-Pacifico">До начала акции осталось:</h3>
                             <p class="text-center">
                                 <Countdown deadline="April 1, 2020"></Countdown>
                             </p>
@@ -23,47 +23,74 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="font-Pacifico tagline blue"><span class="f-size-24">С 1 апреля по 18 октября 2020 года. </span><br><span class="f-size-42">Купи продукцию <br> "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
-                            <p id="reg">
-                                <span class="red-arrow bounce-3"></span>
-                                <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#regModal" v-if="!isLoggedIn">Стать участником розыгрыша</button>
-                                <span class="red-arrow-2 bounce-4"></span>
-                            </p>
+                            <u-animate-container>
+                                <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                    <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию <br> "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
+                                    <p id="reg">
+                                        <span class="red-arrow bounce-3"></span>
+                                        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#regModal" v-if="!isLoggedIn">Стать участником розыгрыша</button>
+                                        <span class="red-arrow-2 bounce-4"></span>
+                                    </p>
+                                </u-animate>
+                            </u-animate-container>
                         </div>
                         <div class="col-md-6">
+                            <u-animate-container>
+                                <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                    <img src="img/bottles.png" id="bottles" alt="">
+                                </u-animate>
+                            </u-animate-container>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <img src="img/flower1.png" alt="" id="flower1">
-        <img src="img/flower2.png" alt="" id="flower2">
         <section id="second">
-            <!-- <div id="splash"></div> -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-center font-Pacifico f-size-42 blue margin-15">Как участвовать?</h2>
+                        <u-animate-container>
+                            <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
+                                <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
+                            </u-animate>
+                        </u-animate-container>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 steps">
-                        <img src="img/steps.png" alt="">
+                        <u-animate-container>
+                            <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
+                                <img src="img/steps.png" alt="" id="steps">
+                            </u-animate>
+                        </u-animate-container>
                     </div>
                 </div>
             </div>
+            <div class="blue-bg" id="save-probe">
+                <u-animate-container>
+                    <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
+                        <h2>сохраняйте крышку с кодом до окончания акции!</h2>
+                    </u-animate>
+                </u-animate-container>
+            </div>
         </section>
+        <Footer />
     </div>
 </template>
 <script>
 import { mask } from 'vue-the-mask'
+import { UAnimateContainer, UAnimate } from 'vue-wow'
 import EnterPromo from '@/components/EnterPromo.vue'
+import Footer from '@/components/Footer.vue'
 import Countdown from 'vuejs-countdown'
 export default {
     directives: { mask },
     components: {
         EnterPromo,
-        Countdown
+        Countdown,
+        Footer,
+        UAnimateContainer,
+        UAnimate
     },
     data() {
         return {
@@ -79,53 +106,23 @@ export default {
 }
 </script>
 <style scoped>
-/* other styles */
-.margin-15{
-    margin: 15px 0;
-}
-.margin-30{
-    margin: 30px 0;
-}
-.f-size-24 {
-    font-size: 24px;
-}
-.f-size-18 {
-    font-size: 18px;
-}
-
-.f-size-42 {
-    font-size: 42px;
-}
-
-.font-Pacifico {
-    font-family: 'Pacifico', cursive;
-}
-
-.blue {
-    color: #0e4194;
-}
-
-#main #flower1 {
-    position: absolute;
-    top: 150px;
-    left: 0;
-    max-width: 100%;
-}
-
-#main #flower2 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    max-width: 100%;
-}
-
 /* section first */
 #first {
     height: 100vh;
 }
 
+#bottles {
+    transition: transform .2s;
+    width: 100%;
+    height: 100%;
+}
+
+.bottles:hover {
+    transform: scale(1.5);
+}
+
 .tagline {
-    margin: 10vh auto;
+    margin: 10vh auto 50px;
 }
 
 svg {
@@ -141,14 +138,16 @@ svg {
 
 #wave {
     position: relative;
-    height: 500px;
+    height: 600px;
     background: #0b345d;
     background-image: linear-gradient(155deg, #6b9dd0 0%, #e0f0ff 50%, #f6f6f6 100%);
     color: #222;
 }
-#reg{
+
+#reg {
     display: flex;
 }
+
 .red-arrow {
     display: inline-block;
     width: 89px;
@@ -208,12 +207,49 @@ svg {
 
 /* section second */
 #second {
-    height: 100vh;
     background: url('/img/drops-1.png') top center no-repeat;
 }
 
-#second .steps{
+#second .steps {
     display: flex;
     justify-content: center;
+}
+
+#steps {
+    max-width: 100%;
+}
+
+#save-probe {
+    margin-top: 45px;
+    padding: 15px 0;
+}
+
+#save-probe h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #f6f6f6;
+    margin: 20px 0;
+    display: block;
+}
+
+@media screen and (max-width: 960px) {
+
+    #main #flower1,
+    #main #flower2,
+    #bottles,
+    .red-arrow,
+    .red-arrow-2 {
+        display: none;
+    }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 18px;
+    }
 }
 </style>
