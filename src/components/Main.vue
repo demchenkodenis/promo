@@ -28,7 +28,7 @@
                                     <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию <br> "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
                                     <p id="reg">
                                         <span class="red-arrow bounce-3"></span>
-                                        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#regModal" v-if="!isLoggedIn">Стать участником розыгрыша</button>
+                                        <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Стать участником розыгрыша</button>
                                         <span class="red-arrow-2 bounce-4"></span>
                                     </p>
                                 </u-animate>
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <u-animate-container>
-                            <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
+                            <u-animate name="pulse" delay="1s" duration=".5s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
                                 <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
                             </u-animate>
                         </u-animate-container>
@@ -102,13 +102,21 @@ export default {
     },
     mounted: function() {
 
+    },
+    methods: {
+        show() {
+            this.$modal.show('hello-world');
+        },
+        hide() {
+            this.$modal.hide('hello-world');
+        }
     }
 }
 </script>
 <style scoped>
 /* section first */
 #first {
-    height: 100vh;
+   margin-bottom: 110px;
 }
 
 #bottles {
@@ -117,8 +125,8 @@ export default {
     height: 100%;
 }
 
-.bottles:hover {
-    transform: scale(1.5);
+#bottles:hover {
+    transform: scale(1.1);
 }
 
 .tagline {
@@ -234,8 +242,8 @@ svg {
 
 @media screen and (max-width: 960px) {
 
-    #main #flower1,
-    #main #flower2,
+    #flower1,
+    #flower2,
     #bottles,
     .red-arrow,
     .red-arrow-2 {

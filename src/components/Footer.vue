@@ -20,7 +20,7 @@
                                     </u-animate>
                                 </u-animate-container>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 justify-content-end">
                                 <!-- <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#">Призы</a>
@@ -38,7 +38,7 @@
                                 <p>
                                     <a href="#">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</a>
                                 </p>
-                                <p class="blue-color">© ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+                                <p>2020 © ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
                             </div>
                         </div>
                     </div>
@@ -62,17 +62,13 @@ export default {
 }
 
 footer {
-    padding: 30px 0;
+    padding: 15px 0;
     background-image: linear-gradient(155deg, #6b9dd0 0%, #e0f0ff 50%, #f6f6f6 100%);
 }
 
 p,
 p a {
     color: #0e4194;
-    font-size: 18px;
-}
-
-.footer-drops {
-    background: url("/img/footer-drops.png") center bottom no-repeat;
+    font-size: 14px;
 }
 </style>

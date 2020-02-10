@@ -22,9 +22,6 @@
                 <input type="text" class="form-control" placeholder="Введите фамилию" v-model="lastname">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Населенный пункт" v-model="city">
-            </div>
-            <div class="form-group">
                 <input type="email" class="form-control" placeholder="Электронная почта" v-model="email">
             </div>
             <div class="form-group">
@@ -46,7 +43,7 @@
                 <a href="#">«Я подтверждаю, что достиг 18-летнего возраста»</a>
             </div>
             <br>
-            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
         </form>
         <div v-html="noError"></div>
     </div>
@@ -60,7 +57,6 @@ export default {
         return {
             name: '',
             lastname: '',
-            city: '',
             email: '',
             phone: '',
             password: '',
@@ -75,7 +71,6 @@ export default {
 
             if (!this.name) this.errors.push('Требуется указать имя.')
             if (!this.lastname) this.errors.push('Требуется указать фамилию.')
-            if (!this.city) this.errors.push('Требуется указать населенный пункт.')
             if (!this.email) this.errors.push('Требуется указать e-mail.')
             if (!this.phone) this.errors.push('Требуется указать телефон.')
             if (!this.password) this.errors.push('Требуется указать пароль.')
@@ -84,7 +79,6 @@ export default {
                 let data = {
                     name: this.name,
                     lastname: this.lastname,
-                    city: this.city,
                     email: this.email,
                     phone: this.phone,
                     password: this.password

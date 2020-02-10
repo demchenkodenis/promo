@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Axios from 'axios'
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal)
 
 Vue.prototype.$http = Axios;
 

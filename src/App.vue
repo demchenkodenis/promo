@@ -30,20 +30,42 @@
                 </div>
             </div>
         </div>
+        <modal class="modal-reg" name="hello-world" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
+                <h5>Регистрация / Личный кабинет</h5>
+                <div slot="top-right">
+                    <span @click="$modal.hide('hello-world')" style="cursor: pointer;">
+                        <span aria-hidden="true">&times;</span>
+                    </span>
+                </div>
+                <div id="tabs" class="container-tabs">
+                    <div class="tabs">
+                        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Регистрация</a>
+                        <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Личный кабинет</a>
+                    </div>
+                    <div class="content">
+                        <div v-if="activetab === 1" class="tabcontent">
+                            <Registr />
+                        </div>
+                        <div v-if="activetab === 2" class="tabcontent">
+                            <Login />
+                        </div>
+                    </div>
+                </div>
+        </modal>
         <img src="img/flower1.png" alt="" id="flower1">
         <img src="img/flower2.png" alt="" id="flower2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="#">
+                        <router-link class="navbar-brand" to="/">
                             <img src="img/logo.png" alt="">
-                        </a>
+                        </router-link>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navb" aria-controls="navb" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navb">
-                            <ul class="navbar-nav" id="nav">
+                            <ul class="navbar-nav ml-md-auto" id="nav">
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/">Главная</router-link>
                                 </li>
@@ -60,7 +82,7 @@
                                     <router-link class="nav-link" to="/winners">Победители</router-link>
                                 </li>
                                 <li class="nav-item" v-if="!isLoggedIn">
-                                    <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#regModal">
+                                    <button type="button" class="btn btn-primary" @click="show">
                                         Личный кабинет
                                     </button>
                                 </li>
@@ -86,12 +108,20 @@ export default {
     },
     data() {
         return {
-
+            activetab: 1
         }
     },
     computed: {
         isLoggedIn: function() { return this.$store.getters.isLoggedIn }
     },
+    methods: {
+        show() {
+            this.$modal.show('hello-world');
+        },
+        hide() {
+            this.$modal.hide('hello-world');
+        }
+    }
 }
 </script>
 <style>
@@ -135,6 +165,7 @@ export default {
 .blue-bg {
     background-color: #0e4194;
 }
+
 #flower1 {
     position: absolute;
     top: 150px;
@@ -160,10 +191,6 @@ nav {
     justify-content: center;
 }
 
-form {
-    margin: 30px 0 15px;
-}
-
 .form-check {
     display: flex;
 }
@@ -173,13 +200,67 @@ form {
     padding: 0;
 }
 
+ul#nav li{
+    margin-left: 15px;
+}
 ul#nav li a {
     font-weight: bold;
-    color: #222;
+    color: #555;
 }
 
 ul#nav li a.router-link-exact-active {
-    color: #42b983;
+    color: #0e4194;
+}
+
+/* modal */
+.modal-reg h5{
+    padding: 15px;
+}
+/* Style the tabs */
+.tabs {
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.tabs ul {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+.tabs a {
+    float: left;
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: background-color 0.2s;
+    border: 1px solid #ccc;
+    border-right: none;
+    background-color: #f1f1f1;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+}
+
+.tabs a:last-child {
+    border-right: 1px solid #ccc;
+}
+
+/* Change background color of tabs on hover */
+.tabs a:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* Styling for active tab */
+.tabs a.active {
+    background-color: #fff;
+    color: #484848;
+    border-bottom: 2px solid #fff;
+    cursor: default;
+}
+
+/* Style the tab content */
+.tabcontent {
+    padding: 0 30px 0 0;
+    border-top: 1px solid #ccc;
 }
 
 /* media */
@@ -196,7 +277,9 @@ ul#nav li a.router-link-exact-active {
 
     #flower1,
     #flower2,
-        {
+    #bottles,
+    .red-arrow,
+    .red-arrow-2 {
         display: none;
     }
 }

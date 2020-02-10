@@ -8,7 +8,7 @@
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Пароль" v-model="password">
             </div>
-            <button type="submit" class="btn btn-success">Войти в личный кабинет</button>
+            <button type="submit" class="btn btn-primary">Войти в личный кабинет</button>
         </form>
         <div v-html="error"></div>
     </div>
@@ -38,7 +38,12 @@ export default {
 }
 </script>
 <style scoped>
-form{
-    margin: 30px;
+form {
+    margin: 5px 30px 30px 30px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
 </style>

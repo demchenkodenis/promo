@@ -6,7 +6,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
-                            <table class="table table-hover">
+                            <table class="table table-hover table-bordered table-responsive-sm">
                                 <thead>
                                     <tr>
                                         <td>Дата</td>
@@ -18,8 +18,8 @@
                                 <tbody>
                                     <tr>
                                         <td>18.05.2020</td>
-                                        <td>Татьяна Главацкая</td>
-                                        <td>8 (908) 786-56-66</td>
+                                        <td>Александр Александров</td>
+                                        <td>8 (123) 456-78-90</td>
                                         <td>Смартфон iPhone XR</td>
                                     </tr>
                                     <tr>
@@ -119,8 +119,12 @@ export default {
 .drops{
 	background: url('/img/drops-1.png') top center no-repeat;
 }
+h3{
+    margin-top: 60px;
+}
 table{
-	margin-top: 30px;
+	margin: 30px 0;
+    background: #fff;
 }
 table tr td{
     color: #0e4194;
