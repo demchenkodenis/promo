@@ -27,9 +27,9 @@
                                 <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                     <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию <br> "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
                                     <p id="reg">
-                                        <span class="red-arrow bounce-3"></span>
+                                        <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
                                         <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Стать участником розыгрыша</button>
-                                        <span class="red-arrow-2 bounce-4"></span>
+                                        <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
                                     </p>
                                 </u-animate>
                             </u-animate-container>
@@ -46,32 +46,40 @@
             </div>
         </section>
         <section id="second">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <u-animate-container>
-                            <u-animate name="pulse" delay="1s" duration=".5s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
-                                <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
-                            </u-animate>
-                        </u-animate-container>
+            <div class="oval">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <u-animate-container>
+                                <u-animate name="pulse" delay="1s" duration=".5s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
+                                    <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
+                                </u-animate>
+                            </u-animate-container>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 steps">
-                        <u-animate-container>
-                            <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
-                                <img src="img/steps.png" alt="" id="steps">
-                            </u-animate>
-                        </u-animate-container>
+                    <div class="row">
+                        <div class="col-md-12 steps">
+                            <u-animate-container>
+                                <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
+                                    <img src="img/steps.png" alt="" id="steps" class="steps-img">
+                                </u-animate>
+                            </u-animate-container>
+                        </div>
                     </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="step-text">Покупайте картофельную соломку Grizzon с 1 февраля по 30 апреля 2020 года </div>
+                            <div class="step-right">Покупайте картофельную соломку Grizzon с 1 февраля по 30 апреля 2020 года</div>
+                        </div>
+                    </div> -->
                 </div>
-            </div>
-            <div class="blue-bg" id="save-probe">
-                <u-animate-container>
-                    <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
-                        <h2>сохраняйте крышку с кодом до окончания акции!</h2>
-                    </u-animate>
-                </u-animate-container>
+                <div class="blue-bg" id="save-probe">
+                    <u-animate-container>
+                        <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
+                            <h2>сохраняйте крышку с кодом до окончания акции!</h2>
+                        </u-animate>
+                    </u-animate-container>
+                </div>
             </div>
         </section>
         <Footer />
@@ -83,6 +91,27 @@ import { UAnimateContainer, UAnimate } from 'vue-wow'
 import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
 import Countdown from 'vuejs-countdown'
+
+const images = document.querySelectorAll(".steps-img");
+const range = 40;
+const calcValue = (a, b) => (a/b*range-range/2).toFixed(1)
+let timeout;
+document.addEventListener('mousemove', ({x, y}) => {
+  if (timeout) {
+    window.cancelAnimationFrame(timeout);
+  }
+    
+  timeout = window.requestAnimationFrame(() => {
+    const yValue = calcValue(y, window.innerHeight);
+    const xValue = calcValue(x, window.innerWidth);
+
+    [].forEach.call(images, (image) => {
+      image.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
+    });
+
+    })
+}, false);
+
 export default {
     directives: { mask },
     components: {
@@ -131,6 +160,7 @@ export default {
 
 .tagline {
     margin: 10vh auto 50px;
+    z-index: 2;
 }
 
 svg {
@@ -215,7 +245,9 @@ svg {
 
 /* section second */
 #second {
-    background: url('/img/drops-1.png') top center no-repeat;
+    background: url('/img/geo.png') repeat;
+    /*background: linear-gradient(0deg, rgba(14,65,148,1) 0%, rgba(255,255,255,1) 100%);*/
+    position: relative;
 }
 
 #second .steps {
@@ -227,16 +259,86 @@ svg {
     max-width: 100%;
 }
 
+.steps-img{
+    position: relative;
+}
+
+
+.step-text{
+    width: 300px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #ffec8d;
+    padding: 15px 10px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: .25px;
+    color: #00370d;
+    text-align: left;
+    position: relative;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.step-text:after {
+    content: "";
+    background: -webkit-gradient(linear,left top,right bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,left bottom,right top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
+    background: -o-linear-gradient(left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    background: linear-gradient(to right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    right: 2px;
+    width: 40px;
+    height: 100%;
+}
+.step-right{
+    width: 300px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #ffec8d;
+    padding: 15px 10px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: .25px;
+    color: #00370d;
+    text-align: left;
+    position: relative;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.step-right:after{
+    right: 40px;
+    left: auto;
+    background: -webkit-gradient(linear,right top,left bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,right bottom,left top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
+    background: -o-linear-gradient(right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    background: linear-gradient(to left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    content: "";
+    background: -webkit-gradient(linear,left top,right bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,left bottom,right top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
+    background: -o-linear-gradient(left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    background: linear-gradient(to right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 40px;
+    height: 100%;
+    transform: rotate(180deg);
+}
+
 #save-probe {
     margin-top: 45px;
-    padding: 15px 0;
+    padding: 1px 0;
 }
 
 #save-probe h2 {
     text-align: center;
     text-transform: uppercase;
     color: #f6f6f6;
-    margin: 20px 0;
+    margin: 10px 0;
     display: block;
 }
 

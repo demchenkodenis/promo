@@ -52,8 +52,8 @@
                     </div>
                 </div>
         </modal>
-        <img src="img/flower1.png" alt="" id="flower1">
-        <img src="img/flower2.png" alt="" id="flower2">
+        <img src="img/clouds1.png" alt="" id="flower1">
+        <img src="img/sun1.png" alt="" id="flower2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -168,18 +168,18 @@ export default {
 
 #flower1 {
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 0;
     max-width: 100%;
-    z-index: 9999
+    z-index: 1;
 }
 
 #flower2 {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 100px;
     max-width: 100%;
-    z-index: 9999
+    z-index: 1;
 }
 
 nav {

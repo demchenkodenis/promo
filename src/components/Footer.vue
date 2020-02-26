@@ -1,6 +1,6 @@
 <template>
     <div>
-        <footer class="">
+        <footer>
             <u-animate-container>
                 <u-animate name="fadeIn" delay="0s" duration="4s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                     <div class="container">
@@ -14,13 +14,13 @@
                             <div class="col-md-4">
                                 <u-animate-container>
                                     <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
-                                        <a class="" href="#">
+                                        <a class="" href="/">
                                             <img src="img/footer-logo.png" alt="">
                                         </a>
                                     </u-animate>
                                 </u-animate-container>
                             </div>
-                            <div class="col-md-4 justify-content-end">
+                            <div class="col-md-4">
                                 <!-- <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#">Призы</a>
@@ -38,12 +38,13 @@
                                 <p>
                                     <a href="#">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</a>
                                 </p>
-                                <p>2020 © ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+                                <p class="blue-color">© ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
                             </div>
                         </div>
                     </div>
                 </u-animate>
             </u-animate-container>
+            <div class="footer-grass"></div>
         </footer>
     </div>
 </template>
@@ -62,13 +63,22 @@ export default {
 }
 
 footer {
-    padding: 15px 0;
     background-image: linear-gradient(155deg, #6b9dd0 0%, #e0f0ff 50%, #f6f6f6 100%);
+    padding-top: 30px;
 }
 
 p,
 p a {
     color: #0e4194;
-    font-size: 14px;
+    font-size: 18px;
+}
+
+.footer-drops {
+    background: url("/img/footer-drops.png") center bottom no-repeat;
+}
+.footer-grass{
+    background: url("/img/footer-grass.png") center center no-repeat;
+    min-height: 219px;
+    margin-top: -65px;
 }
 </style>
