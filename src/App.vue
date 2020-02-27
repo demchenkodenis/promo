@@ -52,8 +52,6 @@
                     </div>
                 </div>
         </modal>
-        <img src="img/clouds1.png" alt="" id="flower1">
-        <img src="img/sun1.png" alt="" id="flower2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -70,16 +68,13 @@
                                     <router-link class="nav-link" to="/">Главная</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link class="nav-link" to="/prizes">Призы</router-link>
+                                    <router-link class="nav-link" to="/winners">Победители</router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/rules">Правила</router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/winners">Победители</router-link>
                                 </li>
                                 <li class="nav-item" v-if="!isLoggedIn">
                                     <button type="button" class="btn btn-primary" @click="show">
@@ -166,7 +161,7 @@ export default {
     background-color: #0e4194;
 }
 
-#flower1 {
+#clouds {
     position: absolute;
     top: 100px;
     left: 0;
@@ -174,7 +169,7 @@ export default {
     z-index: 1;
 }
 
-#flower2 {
+#sun {
     position: absolute;
     top: 0;
     right: 100px;
@@ -263,24 +258,53 @@ ul#nav li a.router-link-exact-active {
     border-top: 1px solid #ccc;
 }
 
-/* media */
-@media screen and (max-width: 1440px) {
-    #flower1 {
-        position: absolute;
-        top: 30px;
-        left: 0;
-        max-width: 100%;
-    }
-}
-
-@media screen and (max-width: 960px) {
-
-    #flower1,
-    #flower2,
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { 
+    #clouds,
+    #sun,
+    #second #iphonexr,
     #bottles,
     .red-arrow,
     .red-arrow-2 {
         display: none;
     }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 2rem;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { 
+    #clouds,
+    #sun,
+    #second #iphonexr,
+    #second #prize,
+    .red-arrow,
+    .red-arrow-2 {
+        display: none;
+    }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 2rem;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+
 }
 </style>

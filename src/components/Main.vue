@@ -1,6 +1,8 @@
 <template>
     <div id="main">
         <section id="first">
+            <img src="img/clouds1.png" alt="" id="clouds">
+            <img src="img/sun1.png" alt="" id="sun">
             <div id="wave">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="-300 0 950 270">
                     <path d="M-314,267 C105,364 400,100 812,379" fill="none" stroke="white" stroke-width="120" stroke-linecap="round" />
@@ -22,10 +24,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <u-animate-container>
                                 <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию <br> "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
+                                    <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
                                     <p id="reg">
                                         <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
                                         <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Стать участником розыгрыша</button>
@@ -46,6 +48,10 @@
             </div>
         </section>
         <section id="second">
+            <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
+            <div>
+                <h3 id="prize" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
+            </div>
             <div class="oval">
                 <div class="container">
                     <div class="row">
@@ -66,12 +72,6 @@
                             </u-animate-container>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="step-text">Покупайте картофельную соломку Grizzon с 1 февраля по 30 апреля 2020 года </div>
-                            <div class="step-right">Покупайте картофельную соломку Grizzon с 1 февраля по 30 апреля 2020 года</div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="blue-bg" id="save-probe">
                     <u-animate-container>
@@ -92,26 +92,6 @@ import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
 import Countdown from 'vuejs-countdown'
 
-const images = document.querySelectorAll(".steps-img");
-const range = 40;
-const calcValue = (a, b) => (a/b*range-range/2).toFixed(1)
-let timeout;
-document.addEventListener('mousemove', ({x, y}) => {
-  if (timeout) {
-    window.cancelAnimationFrame(timeout);
-  }
-    
-  timeout = window.requestAnimationFrame(() => {
-    const yValue = calcValue(y, window.innerHeight);
-    const xValue = calcValue(x, window.innerWidth);
-
-    [].forEach.call(images, (image) => {
-      image.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
-    });
-
-    })
-}, false);
-
 export default {
     directives: { mask },
     components: {
@@ -123,14 +103,16 @@ export default {
     },
     data() {
         return {
-
+            iphonexrLeftPosition: -220,
+            iphonexrRotate: 0,
+            opacityPrize: 0
         }
     },
     computed: {
         isLoggedIn: function() { return this.$store.getters.isLoggedIn }
     },
     mounted: function() {
-
+        window.addEventListener('scroll', this.rotateIphone);
     },
     methods: {
         show() {
@@ -138,7 +120,19 @@ export default {
         },
         hide() {
             this.$modal.hide('hello-world');
+        },
+        rotateIphone() {
+            if(window.scrollY >= 500 && window.scrollY <= 900){
+                this.iphonexrLeftPosition = 0
+                this.iphonexrRotate = 48
+                this.opacityPrize = 1
+            }else{
+                this.iphonexrLeftPosition = -220
+                this.iphonexrRotate = 0
+                this.opacityPrize = 0
+            }
         }
+
     }
 }
 </script>
@@ -246,10 +240,24 @@ svg {
 /* section second */
 #second {
     background: url('/img/geo.png') repeat;
-    /*background: linear-gradient(0deg, rgba(14,65,148,1) 0%, rgba(255,255,255,1) 100%);*/
     position: relative;
 }
 
+#second #iphonexr{
+    position: absolute;
+    transition: all 1s;
+    top: 150px;
+}
+#second #prize{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    padding: 10px;
+    border: 1px solid #0e4194;
+    border-radius: 5px;
+    color: #0e4194;
+    transition: all 1s;
+}
 #second .steps {
     display: flex;
     justify-content: center;
@@ -259,75 +267,6 @@ svg {
     max-width: 100%;
 }
 
-.steps-img{
-    position: relative;
-}
-
-
-.step-text{
-    width: 300px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #ffec8d;
-    padding: 15px 10px;
-    font-family: Roboto;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.22;
-    letter-spacing: .25px;
-    color: #00370d;
-    text-align: left;
-    position: relative;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-.step-text:after {
-    content: "";
-    background: -webkit-gradient(linear,left top,right bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,left bottom,right top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
-    background: -o-linear-gradient(left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    background: linear-gradient(to right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    position: absolute;
-    top: 0;
-    left: -40px;
-    right: 2px;
-    width: 40px;
-    height: 100%;
-}
-.step-right{
-    width: 300px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #ffec8d;
-    padding: 15px 10px;
-    font-family: Roboto;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.22;
-    letter-spacing: .25px;
-    color: #00370d;
-    text-align: left;
-    position: relative;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.step-right:after{
-    right: 40px;
-    left: auto;
-    background: -webkit-gradient(linear,right top,left bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,right bottom,left top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
-    background: -o-linear-gradient(right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    background: linear-gradient(to left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    content: "";
-    background: -webkit-gradient(linear,left top,right bottom,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) top/100% 50.025% no-repeat,-webkit-gradient(linear,left bottom,right top,color-stop(49.5%,rgba(0,0,0,0)),color-stop(50.025%,#ffec8d)) bottom/100% 51% no-repeat;
-    background: -o-linear-gradient(left top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,-o-linear-gradient(left bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    background: linear-gradient(to right bottom,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) top/100% 50.025% no-repeat,linear-gradient(to right top,rgba(0,0,0,0) 49.5%,#ffec8d 50.025%) bottom/100% 51% no-repeat;
-    position: absolute;
-    top: 0;
-    right: -40px;
-    width: 40px;
-    height: 100%;
-    transform: rotate(180deg);
-}
 
 #save-probe {
     margin-top: 45px;
@@ -344,8 +283,9 @@ svg {
 
 @media screen and (max-width: 960px) {
 
-    #flower1,
-    #flower2,
+    #clouds,
+    #sun,
+    #second #iphonexr,
     #bottles,
     .red-arrow,
     .red-arrow-2 {
@@ -361,5 +301,77 @@ svg {
     #main p span {
         font-size: 18px;
     }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { 
+    #clouds,
+    #sun,
+    #second #iphonexr,
+    #bottles,
+    .red-arrow,
+    .red-arrow-2 {
+        display: none;
+    }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 2rem;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { 
+    #clouds,
+    #sun,
+    #second #iphonexr,
+    #bottles,
+    .red-arrow,
+    .red-arrow-2 {
+        display: none;
+    }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 2rem;
+    }
+
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { 
+    #clouds,
+    #sun,
+    #second #iphonexr,
+    #bottles,
+    .red-arrow,
+    .red-arrow-2 {
+        display: none;
+    }
+
+    #first,
+    #second {
+        height: inherit;
+    }
+
+    #main p,
+    #main p span {
+        font-size: 2rem;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+
 }
 </style>

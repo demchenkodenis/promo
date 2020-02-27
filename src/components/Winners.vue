@@ -5,96 +5,110 @@
             <u-animate name="fadeIn" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <table class="table table-hover table-bordered table-responsive-sm">
-                                <thead>
-                                    <tr>
-                                        <td>Дата</td>
-                                        <td>Победитель</td>
-                                        <td>Номер телефона</td>
-                                        <td>Приз</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>18.05.2020</td>
-                                        <td>Александр Александров</td>
-                                        <td>8 (123) 456-78-90</td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1.06.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15.06.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>29.06.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13.07.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>27.07.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10.08.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24.08.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7.09.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>21.09.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.10.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                    <tr>
-                                        <td>19.10.2020</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Смартфон iPhone XR</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br><br><br><br>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </u-animate>
         </u-animate-container>
+        <br><br><br>
         <Footer />
     </div>
 </template>
@@ -117,17 +131,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .drops{
-	background: url('/img/drops-1.png') top center no-repeat;
+	background: url('/img/geo.png') repeat;
 }
-h3{
-    margin-top: 60px;
+.img-responsive{
+    max-width: 100%;
 }
-table{
-	margin: 30px 0;
-    background: #fff;
+.img-responsive:hover{
+    transform: rotateY(180deg);
+    transition: all 1s;
 }
-table tr td{
+h5{
     color: #0e4194;
-    font-weight: bold;
+    text-align: center;
 }
 </style>
