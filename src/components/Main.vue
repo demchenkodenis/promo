@@ -12,7 +12,7 @@
                         <div class="col-md-6 offset-md-3">
                             <h3 class="text-center start-action blue-color font-Pacifico">До начала акции осталось:</h3>
                             <p class="text-center">
-                                <Countdown deadline="April 1, 2020"></Countdown>
+                                <Countdown deadline="May 18, 2020"></Countdown>
                             </p>
                         </div>
                     </div>
@@ -48,39 +48,39 @@
             </div>
         </section>
         <section id="second">
+            <div id="second-bg"></div>
             <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
             <div>
                 <h3 id="prize" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
             </div>
-            <div class="oval">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <u-animate-container>
-                                <u-animate name="pulse" delay="1s" duration=".5s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
-                                    <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
-                                </u-animate>
-                            </u-animate-container>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 steps">
-                            <u-animate-container>
-                                <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
-                                    <img src="img/steps.png" alt="" id="steps" class="steps-img">
-                                </u-animate>
-                            </u-animate-container>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <u-animate-container>
+                            <u-animate name="pulse" delay="1s" duration=".5s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
+                                <h2 class="text-center font-Pacifico f-size-42 blue-color margin-60">Как принять участие в акции?</h2>
+                            </u-animate>
+                        </u-animate-container>
                     </div>
                 </div>
-                <div class="blue-bg" id="save-probe">
-                    <u-animate-container>
-                        <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
-                            <h2>сохраняйте крышку с кодом до окончания акции!</h2>
-                        </u-animate>
-                    </u-animate-container>
+                <div class="row">
+                    <div class="col-md-12 steps">
+                        <u-animate-container>
+                            <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
+                                <img src="img/steps.png" alt="" id="steps" class="steps-img">
+                            </u-animate>
+                        </u-animate-container>
+                    </div>
                 </div>
             </div>
+            <div class="blue-bg" id="save-probe">
+                <u-animate-container>
+                    <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
+                        <h4>сохраняй крышку с кодом до окончания акции</h4>
+                    </u-animate>
+                </u-animate-container>
+            </div>
+            
         </section>
         <Footer />
     </div>
@@ -239,7 +239,10 @@ svg {
 
 /* section second */
 #second {
-    background: url('/img/geo.png') repeat;
+    /*background: url('/img/forest2.png') right bottom no-repeat;*/
+    /*background-image: linear-gradient(155deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);*/
+    background: rgb(2,0,36);
+background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(107,157,208,1) 0%, rgba(255,255,255,1) 100%);
     position: relative;
 }
 
@@ -273,11 +276,11 @@ svg {
     padding: 1px 0;
 }
 
-#save-probe h2 {
+#save-probe h4 {
     text-align: center;
     text-transform: uppercase;
     color: #f6f6f6;
-    margin: 10px 0;
+    margin: 3px 0;
     display: block;
 }
 

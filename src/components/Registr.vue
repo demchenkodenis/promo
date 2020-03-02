@@ -27,20 +27,23 @@
             <div class="form-group">
                 <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'+7 (###) ###-##-##'">
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Придумайте пароль для входа в личный кабинет" v-model="password">
+            <div class="input-group ">
+                <input :type="passwordFieldType" class="form-control" placeholder="Придумайте пароль для входа в личный кабинет" v-model="password">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i :class="showPassIcon" @click="switchVisibility" aria-hidden="true"></i></div>
+                </div>
             </div>
             <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
-                <a href="#">«Я согласен(а) c правилами Акции»</a>
+                <a href="#">Я согласен(а) c правилами Акции</a>
             </div>
             <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
-                <a href="#">«Я согласен(а) с пользовательским соглашением и согласен(а) на обработку персональных данных»</a>
+                <a href="#">Я согласен(а) с пользовательским соглашением и согласен(а) на обработку персональных данных</a>
             </div>
             <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
-                <a href="#">«Я подтверждаю, что достиг 18-летнего возраста»</a>
+                <a href="#">Я подтверждаю, что достиг(ла) 18-летнего возраста</a>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
@@ -63,6 +66,8 @@ export default {
             errors: [],
             noError: '',
             is_admin: null,
+            showPassIcon: 'fa fa-eye',
+            passwordFieldType: 'password'
         }
     },
     methods: {
@@ -88,6 +93,10 @@ export default {
                     .catch(err => console.log(err))
             }
         },
+        switchVisibility() {
+            this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+            this.showPassIcon = this.showPassIcon === 'fa fa-eye' ? 'fa fa-eye-slash' : 'fa fa-eye'
+        }
 
     },
     computed: mapGetters(['errorRegistr', 'countErrReg']),

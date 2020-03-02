@@ -6,16 +6,18 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                <p>Белгородский район, пос. Майский</p>
-                                <p>Mail: bgmarket@mail.ru</p>
-                                <p>Телефон: +7(4722) 39-17-12, 39-16-09</p>
-                                <p>Cайт: may-crystal.ru</p>
+                                <p>Адрес: 308019, г. Белгород, ул. Восточная, д.71, оф.310</p>
+                                <p>Mail: <a href="mailto:td-mx@yandex.ru">td-mx@yandex.ru</a></p>
+                                <p>
+                                    <a href="tel:88006007577">ГОРЯЧАЯ ЛИНИЯ 8 800 600 75 77</a>
+                                </p>
+                                <p>Cайт: <a href="http://may-crystal.ru/" target="_blank">may-crystal.ru</a></p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
                                 <u-animate-container>
                                     <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
-                                        <a class="" href="/">
-                                            <img src="img/footer-logo.png" alt="">
+                                        <a class="footer-logo" href="/">
+                                            <img src="img/footer-logo.png" width="50%" alt="">
                                         </a>
                                     </u-animate>
                                 </u-animate-container>
@@ -39,6 +41,7 @@
                                     <a href="#">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</a>
                                 </p>
                                 <p class="blue-color">© ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+
                             </div>
                         </div>
                     </div>
@@ -76,9 +79,16 @@ p a {
 .footer-drops {
     background: url("/img/footer-drops.png") center bottom no-repeat;
 }
-.footer-grass{
+
+.footer-grass {
     background: url("/img/footer-grass.png") center center no-repeat;
     min-height: 219px;
     margin-top: -65px;
+}
+.footer-logo{
+    text-align: center;
+}
+.footer-logo img{
+    margin: 25px 0;
 }
 </style>
