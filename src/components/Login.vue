@@ -50,13 +50,15 @@ export default {
                 .catch(err => console.log(err))
         },
         restorePassword() {
-            axios({ url: 'https://maycrystal-promo.ru/api/restorePassword.php', restoreEmail: this.restorePasswordEmail, method: 'POST' })
-                .then(resp => {
-                    console.log(resp)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+            axios.post('/api/restorePassword.php', {
+                restoreEmail: this.restorePasswordEmail,
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         },
         showRestorePassword() {
             this.restoreFormVisibility = this.restoreFormVisibility === 'hide' ? 'show' : 'hide'

@@ -47,6 +47,7 @@
                 </div>
             </div>
         </section>
+        <section id="gradient"></section>
         <section id="second">
             <div id="second-bg"></div>
             <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
@@ -103,7 +104,7 @@ export default {
     },
     data() {
         return {
-            iphonexrLeftPosition: -220,
+            iphonexrLeftPosition: -500,
             iphonexrRotate: 0,
             opacityPrize: 0
         }
@@ -123,16 +124,15 @@ export default {
         },
         rotateIphone() {
             if(window.scrollY >= 500 && window.scrollY <= 900){
-                this.iphonexrLeftPosition = 0
-                this.iphonexrRotate = 48
+                this.iphonexrLeftPosition = -50
+                this.iphonexrRotate = 27
                 this.opacityPrize = 1
             }else{
-                this.iphonexrLeftPosition = -220
+                this.iphonexrLeftPosition = -500
                 this.iphonexrRotate = 0
                 this.opacityPrize = 0
             }
         }
-
     }
 }
 </script>
@@ -236,13 +236,14 @@ svg {
     }
 }
 
-
+#gradient{
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%);
+    height: 70px;
+}
 /* section second */
 #second {
-    /*background: url('/img/forest2.png') right bottom no-repeat;*/
+    background: url('/img/leaves-pattern.png') repeat;
     /*background-image: linear-gradient(155deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);*/
-    background: rgb(2,0,36);
-background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(107,157,208,1) 0%, rgba(255,255,255,1) 100%);
     position: relative;
 }
 
@@ -253,13 +254,14 @@ background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(107,157,208,1) 0%, r
 }
 #second #prize{
     position: absolute;
-    top: 100px;
+    top: 80px;
     left: 100px;
     padding: 10px;
-    border: 1px solid #0e4194;
+    /*border: 1px solid #0e4194;*/
     border-radius: 5px;
     color: #0e4194;
     transition: all 1s;
+    background: yellow;
 }
 #second .steps {
     display: flex;

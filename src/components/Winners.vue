@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr.png" alt="" class="img-responsive">
+                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -131,7 +131,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .drops{
-	background: url('/img/geo.png') repeat;
+	margin-top: 50px;
 }
 .img-responsive{
     max-width: 100%;

@@ -150,7 +150,7 @@ export default {
 }
 
 .font-Pacifico {
-    font-family: 'Pacifico', cursive;
+    font-family: 'MyriadPro', cursive;
 }
 
 .blue-color {

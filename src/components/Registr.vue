@@ -111,4 +111,7 @@ ul {
     margin: 0;
     padding: 0;
 }
+.errors li{
+    padding-left: 15px;
+}
 </style>

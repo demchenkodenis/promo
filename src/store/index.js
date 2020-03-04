@@ -40,7 +40,7 @@ export default new Vuex.Store({
         login({ commit }, user) {
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios({ url: 'https://denisdemchenko.ru/project/promo/api/auth.php', data: user, method: 'POST' })
+                axios({ url: '/api/auth.php', data: user, method: 'POST' })
                     .then(resp => {
                         const token = resp.data.t
                         const user = resp.data.lkuid
@@ -61,7 +61,7 @@ export default new Vuex.Store({
         register({ commit }, user) {
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios({ url: 'https://denisdemchenko.ru/project/promo/api/registration.php', data: user, method: 'POST' })
+                axios({ url: '/api/registration.php', data: user, method: 'POST' })
                     .then(resp => {
                         if (resp.data.error.length > 0) {
                             console.log(resp.data.error)
