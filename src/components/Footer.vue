@@ -8,12 +8,12 @@
                             <div class="col-md-4">
                                 <p>Адрес: 308019, г. Белгород, ул. Восточная, д.71, оф.310</p>
                                 <p>Mail: <a href="mailto:td-mx@yandex.ru">td-mx@yandex.ru</a></p>
-                                <p>
-                                    <a href="tel:88006007577">ГОРЯЧАЯ ЛИНИЯ 8 800 600 75 77</a>
-                                </p>
                                 <p>Cайт: <a href="http://may-crystal.ru/" target="_blank">may-crystal.ru</a></p>
                             </div>
                             <div class="col-md-4 text-center">
+                                <p class="text-center">
+                                    <a href="tel:88006007577">ГОРЯЧАЯ ЛИНИЯ 8 800 600 75 77</a>
+                                </p>
                                 <u-animate-container>
                                     <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
                                         <a class="footer-logo" href="/">
@@ -41,8 +41,12 @@
                                     <a href="#">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</a>
                                 </p>
                                 <p class="blue-color">© ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
-
-                            </div>
+                                <p>
+                                    <a href="https://www.instagram.com/may.crystal31/?igshid=8k9k1ota9xr4" target="_blank">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/480px-Instagram_logo_2016.svg.png" alt="" width="48">
+                                    </a>
+                                </p>
+                            </div> 
                         </div>
                     </div>
                 </u-animate>

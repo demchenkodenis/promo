@@ -43,6 +43,11 @@
                 <EnterPromo />
             </div>
         </div>
+        <div class="row" v-if="status == 2">
+            <div class="col-md-12">
+                <h3>Аккаунт временно заблокирован. Обратитесь в службу поддержки.</h3>
+            </div>
+        </div>
     </div>
 </template>
 <script>

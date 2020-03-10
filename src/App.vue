@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -29,7 +29,20 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <modal class="modal-rules" name="rules" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
+                <h5>Правила</h5>
+                <div slot="top-right">
+                    <span @click="$modal.hide('hello-world')" style="cursor: pointer;">
+                        <span aria-hidden="true">&times;</span>
+                    </span>
+                </div>
+                <div id="tabs" class="container-tabs">
+                    <div class="content">
+                        <Rules />
+                    </div>
+                </div>
+        </modal>
         <modal class="modal-reg" name="hello-world" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
                 <h5>Регистрация / Личный кабинет</h5>
                 <div slot="top-right">
@@ -71,13 +84,13 @@
                                     <router-link class="nav-link" to="/winners">Победители</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link class="nav-link" to="/rules">Правила</router-link>
+                                    <a href="#" class="nav-link" @click="showRules">Правила</a>
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
                                 </li>
                                 <li class="nav-item" v-if="!isLoggedIn">
-                                    <button type="button" class="btn btn-primary" @click="show">
+                                    <button type="button" class="btn btn-primary" @click="showReg">
                                         Личный кабинет
                                     </button>
                                 </li>
@@ -96,10 +109,12 @@
 <script>
 import Login from '@/components/Login.vue'
 import Registr from '@/components/Registr.vue'
+import Rules from '@/components/Rules.vue'
 export default {
     components: {
         Login,
-        Registr
+        Registr,
+        Rules
     },
     data() {
         return {
@@ -110,17 +125,22 @@ export default {
         isLoggedIn: function() { return this.$store.getters.isLoggedIn }
     },
     methods: {
-        show() {
+        showReg() {
             this.$modal.show('hello-world');
         },
-        hide() {
+        hideReg() {
             this.$modal.hide('hello-world');
+        },
+        showRules() {
+            this.$modal.show('rules');
         }
     }
 }
 </script>
 <style>
 /* other styles */
+
+
 .margin-15 {
     margin: 15px 0;
 }
@@ -137,12 +157,16 @@ export default {
     margin: 60px 0;
 }
 
+.f-size-18 {
+    font-size: 18px;
+}
+
 .f-size-24 {
     font-size: 24px;
 }
 
-.f-size-18 {
-    font-size: 18px;
+.f-size-36 {
+    font-size: 36px;
 }
 
 .f-size-42 {

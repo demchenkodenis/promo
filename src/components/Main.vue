@@ -27,7 +27,9 @@
                         <div class="col-md-12 col-lg-6">
                             <u-animate-container>
                                 <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <p class="font-Pacifico tagline blue-color"><span class="f-size-24">С 1 апреля по 18 октября 2020 года</span><br><span class="f-size-42">Купи продукцию "Майская Хрустальная" и участвуй в розыгрыше 12-ти смартфонов IPhone XR!</span></p>
+                                    <p class="font-Pacifico tagline blue-color f-size-36">
+                                        с 1 апреля по 18 октября 2020 года купи продукцию <br> «Майская хрустальная»™ <br> в промоупаковке – получи возможность выиграть смартфон iPhone X
+                                    </p>
                                     <p id="reg">
                                         <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
                                         <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Стать участником розыгрыша</button>
@@ -74,14 +76,13 @@
                     </div>
                 </div>
             </div>
-            <div class="blue-bg" id="save-probe">
+            <div id="save-probe">
                 <u-animate-container>
-                    <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="50" animateClass="animated" :begin="false">
+                    <u-animate name="flash" delay="1s" duration="2s" :iteration="1000" :offset="50" animateClass="animated" :begin="false">
                         <h4>сохраняй крышку с кодом до окончания акции</h4>
                     </u-animate>
                 </u-animate-container>
             </div>
-            
         </section>
         <Footer />
     </div>
@@ -123,11 +124,11 @@ export default {
             this.$modal.hide('hello-world');
         },
         rotateIphone() {
-            if(window.scrollY >= 500 && window.scrollY <= 900){
+            if (window.scrollY >= 500 && window.scrollY <= 900) {
                 this.iphonexrLeftPosition = -50
                 this.iphonexrRotate = 27
                 this.opacityPrize = 1
-            }else{
+            } else {
                 this.iphonexrLeftPosition = -500
                 this.iphonexrRotate = 0
                 this.opacityPrize = 0
@@ -139,7 +140,7 @@ export default {
 <style scoped>
 /* section first */
 #first {
-   margin-bottom: 110px;
+    margin-bottom: 110px;
 }
 
 #bottles {
@@ -155,6 +156,19 @@ export default {
 .tagline {
     margin: 10vh auto 50px;
     z-index: 2;
+    position: relative;
+}
+
+.tagline:after{
+    position: absolute;
+    bottom: 17px;
+    content: 'R';
+    font-weight: 900;
+    font-size: 12px;
+    padding: 0px 7px;
+    border: 2px solid #0e4194;
+    border-radius: 5px;
+    vertical-align: middle;
 }
 
 svg {
@@ -236,10 +250,11 @@ svg {
     }
 }
 
-#gradient{
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%);
+#gradient {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
     height: 70px;
 }
+
 /* section second */
 #second {
     background: url('/img/leaves-pattern.png') repeat;
@@ -247,12 +262,13 @@ svg {
     position: relative;
 }
 
-#second #iphonexr{
+#second #iphonexr {
     position: absolute;
     transition: all 1s;
     top: 150px;
 }
-#second #prize{
+
+#second #prize {
     position: absolute;
     top: 80px;
     left: 100px;
@@ -263,6 +279,7 @@ svg {
     transition: all 1s;
     background: yellow;
 }
+
 #second .steps {
     display: flex;
     justify-content: center;
@@ -276,12 +293,14 @@ svg {
 #save-probe {
     margin-top: 45px;
     padding: 1px 0;
+    background: yellow;
 }
+
 
 #save-probe h4 {
     text-align: center;
     text-transform: uppercase;
-    color: #f6f6f6;
+    color: #0e4194;
     margin: 3px 0;
     display: block;
 }
@@ -309,7 +328,8 @@ svg {
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { 
+@media (min-width: @screen-sm-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -331,7 +351,8 @@ svg {
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { 
+@media (min-width: @screen-md-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -352,8 +373,10 @@ svg {
     }
 
 }
+
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { 
+@media (min-width: @screen-md-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -376,7 +399,5 @@ svg {
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) {
-
-}
+@media (min-width: @screen-lg-min) {}
 </style>
