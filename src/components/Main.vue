@@ -67,13 +67,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 steps">
+                    <!-- <div class="col-md-12 steps">
                         <u-animate-container>
                             <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
                                 <img src="img/steps.png" alt="" id="steps" class="steps-img">
                             </u-animate>
                         </u-animate-container>
-                    </div>
+                    </div> -->
+                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel assumenda quo, quasi excepturi vero. Ut necessitatibus voluptas saepe, officia similique maxime rem eius distinctio, quos sed obcaecati, quis numquam temporibus.</div>
+                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum soluta voluptatibus quidem earum delectus quisquam praesentium reprehenderit eaque facere, hic vero similique itaque odio dolorem tempora, quia sed iste fugit.</div>
+                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem eligendi at laudantium molestias voluptate, esse error ipsam assumenda unde. Odit quasi pariatur hic a fugiat magnam nam doloremque exercitationem fugit!</div>
+                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sint laboriosam molestias similique maxime enim nesciunt quibusdam, harum facere iusto, temporibus deserunt optio atque doloribus. Earum facere, autem iste recusandae.</div>
                 </div>
             </div>
             <div id="save-probe">

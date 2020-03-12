@@ -2,13 +2,23 @@
     <div class="login-form">
         <form @submit.prevent="login" :class="loginForm">
             <br>
-            <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">
+                        <span class="input-group-addon"><i class="fas fa-phone"></i></span>
+                    </label>
+                </div>
                 <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'+7 (###) ###-##-##'">
             </div>
-            <div class="form-group">
+            <div class="input-group">
+                 <div class="input-group-prepend">
+                    <label class="input-group-text">
+                        <span class="input-group-addon"><i class="fas fa-lock"></i></span>
+                    </label>
+                </div>
                 <input type="password" class="form-control" placeholder="Пароль" v-model="password">
             </div>
-            <button type="submit" class="btn btn-primary">Войти в личный кабинет</button>
+            <button type="submit" class="btn btn-primary btn-block">Войти в личный кабинет</button>
         </form>
         <br>
         <p @click="showRestorePassword" class="res-pass">
@@ -18,7 +28,7 @@
             <div class="form-group">
                 <input type="email" class="form-control" placeholder="Введите электронную почту" v-model="restorePasswordEmail">
             </div>
-            <button type="submit" class="btn btn-primary">Восстановить пароль</button>
+            <button type="submit" class="btn btn-primary btn-block">Восстановить пароль</button>
         </form>
         <div v-html="error"></div>
     </div>
@@ -88,5 +98,8 @@ ul {
 
 .res-pass {
     cursor: pointer;
+}
+.input-group{
+    margin-bottom: 10px;
 }
 </style>
