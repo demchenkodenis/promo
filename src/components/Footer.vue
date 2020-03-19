@@ -1,5 +1,12 @@
 <template>
     <div>
+        <div id="save-probe">
+            <u-animate-container>
+                <u-animate name="flash" delay="1s" duration="2s" :iteration="1000" :offset="50" animateClass="animated" :begin="false">
+                    <h4>сохраняй крышку с кодом до окончания акции</h4>
+                </u-animate>
+            </u-animate-container>
+        </div>
         <footer>
             <u-animate-container>
                 <u-animate name="fadeIn" delay="0s" duration="4s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
@@ -46,7 +53,7 @@
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/480px-Instagram_logo_2016.svg.png" alt="" width="48">
                                     </a>
                                 </p>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </u-animate>
@@ -65,6 +72,19 @@ export default {
 }
 </script>
 <style>
+#save-probe {
+    padding: 1px 0;
+    background: yellow;
+}
+
+
+#save-probe h4 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #0e4194;
+    margin: 3px 0;
+    display: block;
+}
 .blue-bg {
     background-color: #0e4194;
 }
@@ -89,10 +109,12 @@ p a {
     min-height: 219px;
     margin-top: -65px;
 }
-.footer-logo{
+
+.footer-logo {
     text-align: center;
 }
-.footer-logo img{
+
+.footer-logo img {
     margin: 25px 0;
 }
 </style>

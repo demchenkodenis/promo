@@ -1,35 +1,5 @@
 <template>
     <div id="app">
-        <!-- <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Регистрация / Личный кабинет</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#registr">Регистрация</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile">Личный кабинет</a>
-                            </li>
-                        </ul>
-                        <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane fade show active" id="registr">
-                                <Registr />
-                            </div>
-                            <div class="tab-pane fade" id="profile">
-                                <Login />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <modal class="modal-rules" name="rules" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
                 <h5>Правила</h5>
                 <div slot="top-right">
@@ -126,13 +96,13 @@ export default {
     },
     methods: {
         showReg() {
-            this.$modal.show('hello-world');
+            this.$modal.show('hello-world')
         },
         hideReg() {
-            this.$modal.hide('hello-world');
+            this.$modal.hide('hello-world')
         },
         showRules() {
-            this.$modal.show('rules');
+            this.$modal.show('rules')
         }
     }
 }
@@ -239,6 +209,8 @@ ul#nav li a.router-link-exact-active {
 .tabs {
     overflow: hidden;
     margin-left: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .tabs ul {
@@ -330,5 +302,12 @@ ul#nav li a.router-link-exact-active {
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
 
+}
+
+@media (min-width: 1200px) and (max-width: 1440px){
+    #sun{
+        right: 50px;
+        top: 40px
+    }
 }
 </style>

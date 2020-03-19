@@ -22,60 +22,60 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingTwo">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
                                                 Кто может принять участие в Акции?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>В Акции могут принять участие дееспособные граждане Российской Федерации, постоянно зарегистрированные на территории Российской Федерации и достигшие возраста 18 лет. В Акции запрещается участвовать работникам и представителям Организатора, аффилированным с ним лицам, членам семей таких работников и представителей.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingThree">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
                                                 Сроки проведения Акции?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div id="collapse2" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <h5>Сроки проведения акции:</h5>
+                                            <p>Общий срок проведения Акции, включая выдачу Призов: с 01.04.2020 г. по 02.11.2020 г.</p>
                                             <p>Период регистрации кодов: с 01.04.2020 г. по 18.10.2020 г.</p>
-                                            <p>Сроки вручения призов: с 19.05.2020 г. по хх.хх.2020 г.</p>
+                                            <p>Сроки вручения Призов: с 18.05.2020 г. по 02.11.2020 г.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingFour">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                                Где проводится Акция (территория проведения Акции)?
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                                Где проводится Акция?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                    <div id="collapse3" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Акция проводится на территории Белгородской области.</p>
+                                            <p>Акция проводится на территории Белгородской, Курской и Воронежской областей.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingFive">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
                                                 Какая продукция участвует в Акции?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                    <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <h5>В Акции участвует следующая продукция ТМ «Майская хрустальная» в промоупаковке:</h5>
+                                            <h5>В Акции участвует следующая продукция «Майская хрустальная»™ в промоупаковке:</h5>
                                             <p>Вода минеральная природная питьевая столовая негазированная 0,5л ПЭТ бутылка</p>
                                             <p>Вода минеральная природная питьевая столовая газированная 0,5л ПЭТ бутылка</p>
                                             <p>Вода минеральная природная питьевая столовая негазированная 1,5л ПЭТ бутылка</p>
@@ -85,98 +85,162 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingSix">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
                                                 Как принять участие в Акции?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                    <div id="collapse5" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Купить продукцию ТМ «Майская хрустальная» объемом 0,5л, 1,5л, 5л в промоупаковке. Найти уникальный код под крышкой. Зарегистрировать код на сайте maycrystal-promo.ru. Стать участником розыгрыша призов.</p>
+                                            <p>Купить продукцию «Майская хрустальная» ™ объемом 0,5л, 1,5л, 5л в промоупаковке.</p>
+                                            <p>Найти уникальный 10-ти значный код под крышкой (нанесен на каждую крышку продукции, участвующей в Акции). Однократно зарегистрироваться на сайте <a href="https://maycrystal-promo.ru/">maycrystal-promo.ru.</a></p>
+                                            <p>Ввести код в поле «Зарегистрировать код» на сайте <a href="https://maycrystal-promo.ru/">maycrystal-promo.ru.</a> Каждый зарегистрированный Участник получает возможность выиграть Приз.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingSeven">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                                                Какие Призы можно получить, участвуя в Акции?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse6" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Призовой фонд формируется исключительно за счет средств Организатора и состоит из 12-ти (двенадцати) смартфонов iPhone XR.</p>
+                                            <p>Денежный эквивалент стоимости призов не выплачивается.</p>
+                                            <p>Один Победитель может выиграть не более 1-го (одного) Приза за весь период проведения Акции.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                                                Где искать код?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse7" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Уникальный код нанесен на внутреннюю часть крышки бутылки.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                                                Как зарегистрироваться на сайте Акции?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse8" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Зарегистрироваться в качестве Участника Акции путем нажатия на кнопку «Регистрация» во вкладке «Личный кабинет» либо в поле «Зарегистрировать код». Для прохождения регистрации необходимо заполнить все поля регистрационной формы. Регистрация в качестве Участника Акции производится однократно за весь период проведения Акции.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
                                                 Как зарегистрировать код на сайте?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                    <div id="collapse9" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
+                                            <p>Регистрация кода проходит путем введения 10-ти значного уникального кода в поле «Зарегистрировать код» на главной странице.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingEight">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
-                                                Как восстановить пароль?
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
+                                                Какое количество кодов можно зарегистрировать?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                                    <div id="collapse10" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
+                                            <p>Участник может зарегистрировать неограниченное количество реальных кодов, равное количеству приобретенной им продукции в промоупаковке.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingNine">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
                                                 Что делать, если возникли проблемы с вводом кода?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                                    <div id="collapse11" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>В случае возникновения проблемы с вводом кода необходимо связаться с организатором акции по номеру горячей линии или с помощью формы обратной связи.</p>
+                                            <p>В случае возникновения проблемы с вводом кода необходимо связаться с Организатором Акции по номеру горячей линии или с помощью формы обратной связи.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingTen">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseThree">
-                                                Как я узнаю, что выиграл(а) приз?
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                                                Как восстановить пароль?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                                    <div id="collapse12" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Оповещение победителя происходит путем звонка от Организатора акции. Список победителей располагается в разделе «ПОБЕДИТЕЛИ» промосайта. Выигравший код также отображается в личном кабинете победителя.</p>
+                                            <p>Пароль можно восстановить во вкладке «Личный кабинет». Для восстановления необходимо перейти во вкладку «Личный кабинет», далее нажать кнопку «Я не помню пароль». В поле «Введите электронную почту», необходимо ввести e-mail адрес, который был указан Участником Акции при регистрации. На введенную электронную почту придет уже новый сгенерированный пароль, который предоставит доступ в личный кабинет. Старый пароль будет автоматически заменен на новый пароль, сгенерированный системой.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingEleven">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseThree">
-                                                Как получить Приз?
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapse13">
+                                                Как узнать, что выиграл(а) Приз?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                                    <div id="collapse13" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Для получения приза победителю необходимо приехать на территорию организатора акции.</p>
+                                            <p>Победитель оповещается путем отправки сообщения на адрес электронной почты Победителя и звонком от представителя Организатора Акции. Выигравший код отображается в личном кабинете Победителя.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingTwelve">
+                                    <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse14" aria-expanded="true" aria-controls="collapse14">
+                                                Где получить Приз?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse14" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Для получения приза Победителю необходимо приехать на территорию Организатора Акции.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse15" aria-expanded="true" aria-controls="collapse15">
                                                 Нужно ли сохранять крышку с кодом?
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+                                    <div id="collapse15" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Крышку с уникальным кодом необходимо сохранять до конца акции. В случае выигрыша приза крышку необходимо предоставить организатору акции.</p>
+                                            <p>Крышку с уникальным кодом необходимо сохранять до конца Акции. В случае выигрыша Приза крышку с кодом необходимо предоставить Организатору Акции.</p>
+                                            <p>Остались вопросы? Свяжитесь с нами по телефону горячей линии 8 800 600 75 77 или с помощью формы обратной связи.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +272,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .drops {
-
+    background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
 }
 
 h3 {

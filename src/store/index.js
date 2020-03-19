@@ -9,6 +9,7 @@ export default new Vuex.Store({
         token: localStorage.getItem('t') || '',
         user: {},
         errorRegistration: [],
+        errorLogin: '',
         countErrorRegistr: 0,
         promoCodes: []
     },
@@ -28,6 +29,10 @@ export default new Vuex.Store({
             state.status = ''
             state.token = ''
         },
+        errorLog(state, errLog){
+            state.errorLogin = ''
+            state.errorLogin = errLog
+        },
         errorRegistr(state, errReg) {
             state.errorRegistration = []
             state.errorRegistration.push(errReg)
@@ -42,13 +47,18 @@ export default new Vuex.Store({
                 commit('auth_request')
                 axios({ url: '/api/auth.php', data: user, method: 'POST' })
                     .then(resp => {
-                        const token = resp.data.t
-                        const user = resp.data.lkuid
-                        localStorage.setItem('t', token)
-                        localStorage.setItem('lkuid', user);
-                        axios.defaults.headers.common['Authorization'] = token
-                        commit('auth_success', token, user)
-                        resolve(resp)
+                        if (resp.data.error.length > 0) {
+                            console.log(resp.data.error)
+                            commit('errorLog', resp.data.error)
+                        } else {
+                            const token = resp.data.t
+                            const user = resp.data.lkuid
+                            localStorage.setItem('t', token)
+                            localStorage.setItem('lkuid', user);
+                            axios.defaults.headers.common['Authorization'] = token
+                            commit('auth_success', token, user)
+                            resolve(resp)
+                        }
                     })
                     .catch(err => {
                         commit('auth_error')
@@ -60,6 +70,7 @@ export default new Vuex.Store({
         },
         register({ commit }, user) {
             return new Promise((resolve, reject) => {
+                console.log(resolve, reject)
                 commit('auth_request')
                 axios({ url: '/api/registration.php', data: user, method: 'POST' })
                     .then(resp => {
@@ -98,6 +109,7 @@ export default new Vuex.Store({
         isLoggedIn: state => !!state.token,
         authStatus: state => state.status,
         errorRegistr: state => state.errorRegistration,
+        errorLog: state => state.errorLogin,
         countErrReg: state => state.countErrorRegistr
     }
 })

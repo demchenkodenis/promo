@@ -30,12 +30,13 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Восстановить пароль</button>
         </form>
-        <div v-html="error"></div>
+        <div v-if="errorLog" class="alert alert-dismissible alert-danger">{{ errorLog }}</div>
     </div>
 </template>
 <script>
 import axios from 'axios'
 import { mask } from 'vue-the-mask'
+import { mapGetters } from 'vuex'
 export default {
     directives: { mask },
     data() {
@@ -56,7 +57,10 @@ export default {
                 password: this.password
             }
             this.$store.dispatch('login', data)
-                .then(() => this.$router.push('/secure'))
+                .then(
+                    () => this.$router.push('/secure'),
+                    this.$modal.hide('hello-world')
+                )
                 .catch(err => console.log(err))
         },
         restorePassword() {
@@ -75,7 +79,8 @@ export default {
             this.loginForm = this.loginForm === 'show' ? 'hide' : 'show'
             this.rememberPass = this.loginForm === 'show' ? 'Я не помню пароль' : 'Мне не нужно восстанавливать пароль'
         }
-    }
+    },
+    computed: mapGetters(['errorLog']),
 }
 </script>
 <style scoped>

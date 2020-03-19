@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" placeholder="Введите промокод" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                    <input class="form-control form-control-lg" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
                     <div v-if="promo.length == 10 && isPromoValid == true">
-                        <button class="btn btn-lg btn-primary" @click="enterPromoCode">Отправить</button>
+                        <button class="btn btn-lg btn-primary btn-block" @click="enterPromoCode">Отправить</button>
                     </div>
                 </div>
                 <h3>{{ msg }}</h3>
@@ -29,7 +29,7 @@ export default {
     methods: {
         enterPromoCode() {
             const self = this
-            axios.post('https://denisdemchenko.ru/project/promo/api/enterPromo.php', {
+            axios.post('/api/enterPromo.php', {
                     lkuid: localStorage.getItem('lkuid'),
                     t: localStorage.getItem('t'),
                     promo: this.promo

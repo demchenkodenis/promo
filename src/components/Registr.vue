@@ -73,14 +73,13 @@ export default {
     methods: {
         register() {
             this.errors = []
-
             if (!this.name) this.errors.push('Требуется указать имя.')
             if (!this.lastname) this.errors.push('Требуется указать фамилию.')
             if (!this.email) this.errors.push('Требуется указать e-mail.')
             if (!this.phone) this.errors.push('Требуется указать телефон.')
             if (!this.password) this.errors.push('Требуется указать пароль.')
 
-            if (this.name && this.lastname && this.city && this.email && this.phone && this.password) {
+            if (this.name && this.lastname && this.email && this.phone && this.password) {
                 let data = {
                     name: this.name,
                     lastname: this.lastname,
@@ -89,9 +88,13 @@ export default {
                     password: this.password
                 }
                 this.$store.dispatch('register', data)
-                    .then(() => this.$router.push('/secure'))
+                    .then(
+                        () => this.$router.push('/secure'),
+                        this.$modal.hide('hello-world')
+                    )
                     .catch(err => console.log(err))
             }
+
         },
         switchVisibility() {
             this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'

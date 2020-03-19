@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <h3 class="text-center start-action blue-color font-Pacifico">До начала акции осталось:</h3>
+                            <h3 class="text-center start-action blue-color font-Pacifico">До начала первого розыгрыша осталось:</h3>
                             <p class="text-center">
                                 <Countdown deadline="May 18, 2020"></Countdown>
                             </p>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div v-if="isLoggedIn">
+                            <div v-if="isLoggedIn && status == 1">
                                 <EnterPromo />
                             </div>
                         </div>
@@ -28,7 +28,8 @@
                             <u-animate-container>
                                 <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                     <p class="font-Pacifico tagline blue-color f-size-36">
-                                        с 1 апреля по 18 октября 2020 года купи продукцию <br> «Майская хрустальная»™ <br> в промоупаковке – получи возможность выиграть смартфон iPhone X
+                                        с 1 апреля по 18 октября 2020 года участвуй в акции <br> от «Майской хрустальной»™ и
+                                        получи возможность выиграть смартфон iPhone X
                                     </p>
                                     <p id="reg">
                                         <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
@@ -49,13 +50,11 @@
                 </div>
             </div>
         </section>
-        <section id="gradient"></section>
         <section id="second">
-            <div id="second-bg"></div>
-            <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
+            <!-- <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
             <div>
                 <h3 id="prize" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
-            </div>
+            </div> -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -74,18 +73,66 @@
                             </u-animate>
                         </u-animate-container>
                     </div> -->
-                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel assumenda quo, quasi excepturi vero. Ut necessitatibus voluptas saepe, officia similique maxime rem eius distinctio, quos sed obcaecati, quis numquam temporibus.</div>
-                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum soluta voluptatibus quidem earum delectus quisquam praesentium reprehenderit eaque facere, hic vero similique itaque odio dolorem tempora, quia sed iste fugit.</div>
-                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem eligendi at laudantium molestias voluptate, esse error ipsam assumenda unde. Odit quasi pariatur hic a fugiat magnam nam doloremque exercitationem fugit!</div>
-                    <div class="col-md-3" style="height: 100px; background: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sint laboriosam molestias similique maxime enim nesciunt quibusdam, harum facere iusto, temporibus deserunt optio atque doloribus. Earum facere, autem iste recusandae.</div>
+                    <div class="col-md-3 levels">
+                        <u-animate-container>
+                            <u-animate name="bounceInLeft" delay="1s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                <div class="level-img">
+                                    <span>1</span>
+                                    <img src="img/bottles2.png" class="img-responsive" alt="">
+                                    <img src="img/yellow-arrow.png" alt="">
+                                </div>
+                                <div class="level-text">
+                                    <h2 class="text-center blue-color">Купи</h2>
+                                    <p class="text-center">продукцию «Майская хрустальная»™ в промоупаковке</p>
+                                </div>
+                            </u-animate>
+                        </u-animate-container>
+                    </div>
+                    <div class="col-md-3 levels">
+                        <u-animate-container>
+                            <u-animate name="bounceInLeft" delay="2s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                <div class="level-img">
+                                    <span>2</span>
+                                    <img src="img/prize.png" class="img-responsive" alt="">
+                                    <img src="img/yellow-arrow.png" alt="">
+                                </div>
+                                <div class="level-text">
+                                    <h2 class="text-center blue-color">Найди</h2>
+                                    <p class="text-center">десятизначный код под крышкой</p>
+                                </div>
+                            </u-animate>
+                        </u-animate-container>
+                    </div>
+                    <div class="col-md-3 levels">
+                        <u-animate-container>
+                            <u-animate name="bounceInLeft" delay="3s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                <div class="level-img">
+                                    <span>3</span>
+                                    <img src="img/reg.png" class="img-responsive" alt="">
+                                    <img src="img/yellow-arrow.png" alt="">
+                                </div>
+                                <div class="level-text">
+                                    <h2 class="text-center blue-color">Зарегистрируй</h2>
+                                    <p class="text-center">код на сайте</p>
+                                </div>
+                            </u-animate>
+                        </u-animate-container>
+                    </div>
+                    <div class="col-md-3 levels">
+                        <u-animate-container>
+                            <u-animate name="bounceInRight" delay="4s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                <div class="level-img">
+                                    <span>4</span>
+                                    <img src="img/iphones2.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="level-text">
+                                    <h2 class="text-center blue-color">Получи</h2>
+                                    <p class="text-center">возможность выиграть один из двенадцати смартфонов <br> iPhone XR</p>
+                                </div>
+                            </u-animate>
+                        </u-animate-container>
+                    </div>
                 </div>
-            </div>
-            <div id="save-probe">
-                <u-animate-container>
-                    <u-animate name="flash" delay="1s" duration="2s" :iteration="1000" :offset="50" animateClass="animated" :begin="false">
-                        <h4>сохраняй крышку с кодом до окончания акции</h4>
-                    </u-animate>
-                </u-animate-container>
             </div>
         </section>
         <Footer />
@@ -111,7 +158,8 @@ export default {
         return {
             iphonexrLeftPosition: -500,
             iphonexrRotate: 0,
-            opacityPrize: 0
+            opacityPrize: 0,
+            status: ''
         }
     },
     computed: {
@@ -119,6 +167,17 @@ export default {
     },
     mounted: function() {
         window.addEventListener('scroll', this.rotateIphone);
+        const self = this
+        this.$http.post('/api/secure.php', {
+                lkuid: localStorage.getItem('lkuid'),
+                t: localStorage.getItem('t')
+            })
+            .then(function(response) {
+                self.status = response.data.status
+            })
+            .catch(function(error) {
+                console.log(error)
+            });
     },
     methods: {
         show() {
@@ -142,10 +201,11 @@ export default {
 }
 </script>
 <style scoped>
-/* section first */
-#first {
-    margin-bottom: 110px;
+.img-responsive {
+    max-width: 88%;
 }
+
+/* section first */
 
 #bottles {
     transition: transform .2s;
@@ -163,13 +223,13 @@ export default {
     position: relative;
 }
 
-.tagline:after{
+.tagline:after {
     position: absolute;
-    bottom: 17px;
+    bottom: 19px;
     content: 'R';
     font-weight: 900;
     font-size: 12px;
-    padding: 0px 7px;
+    padding: 0px 5px;
     border: 2px solid #0e4194;
     border-radius: 5px;
     vertical-align: middle;
@@ -188,7 +248,6 @@ svg {
 
 #wave {
     position: relative;
-    height: 600px;
     background: #0b345d;
     background-image: linear-gradient(155deg, #6b9dd0 0%, #e0f0ff 50%, #f6f6f6 100%);
     color: #222;
@@ -254,15 +313,15 @@ svg {
     }
 }
 
-#gradient {
+/*#gradient {
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
     height: 70px;
 }
-
+*/
 /* section second */
 #second {
-    background: url('/img/leaves-pattern.png') repeat;
-    /*background-image: linear-gradient(155deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);*/
+    /*background: url('/img/leaves-pattern.png') repeat;*/
+    background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
     position: relative;
 }
 
@@ -284,6 +343,39 @@ svg {
     background: yellow;
 }
 
+.levels {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.level-img {
+    position: relative;
+    height: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.level-img span {
+    display: block;
+    position: absolute;
+    background: yellow;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    color: #0e4194;
+}
+
+.level-text {
+    margin-top: 20px;
+    min-height: 150px;
+}
+
 #second .steps {
     display: flex;
     justify-content: center;
@@ -293,20 +385,11 @@ svg {
     max-width: 100%;
 }
 
-
-#save-probe {
-    margin-top: 45px;
-    padding: 1px 0;
-    background: yellow;
-}
-
-
-#save-probe h4 {
-    text-align: center;
-    text-transform: uppercase;
-    color: #0e4194;
-    margin: 3px 0;
-    display: block;
+.my-card {
+    position: absolute;
+    left: 40%;
+    top: -20px;
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 960px) {
