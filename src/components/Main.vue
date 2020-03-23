@@ -12,7 +12,7 @@
                         <div class="col-md-6 offset-md-3">
                             <h3 class="text-center start-action blue-color font-Pacifico">До начала первого розыгрыша осталось:</h3>
                             <p class="text-center">
-                                <Countdown deadline="May 18, 2020"></Countdown>
+                                <Countdown :deadline="countdownDate"></Countdown>
                             </p>
                         </div>
                     </div>
@@ -27,13 +27,13 @@
                         <div class="col-md-12 col-lg-6">
                             <u-animate-container>
                                 <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <p class="font-Pacifico tagline blue-color f-size-36">
-                                        с 1 апреля по 18 октября 2020 года участвуй в акции <br> от «Майской хрустальной»™ и
+                                    <p class="font-Pacifico tagline blue-color f-size-35">
+                                        с 1 апреля по 18 октября 2020 года участвуй в акции от <br> «Майской хрустальной»™ и
                                         получи возможность выиграть смартфон iPhone X
                                     </p>
                                     <p id="reg">
                                         <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
-                                        <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Стать участником розыгрыша</button>
+                                        <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Зарегистрировать код</button>
                                         <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
                                     </p>
                                 </u-animate>
@@ -51,10 +51,10 @@
             </div>
         </section>
         <section id="second">
-            <!-- <img src="img/iphonexr.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
+            <img src="img/iphonexr_mini.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
             <div>
                 <h3 id="prize" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
-            </div> -->
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -66,13 +66,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!-- <div class="col-md-12 steps">
-                        <u-animate-container>
-                            <u-animate name="zoomIn" delay="0s" duration="2s" :iteration="1" :offset="300" animateClass="animated" :begin="false">
-                                <img src="img/steps.png" alt="" id="steps" class="steps-img">
-                            </u-animate>
-                        </u-animate-container>
-                    </div> -->
                     <div class="col-md-3 levels">
                         <u-animate-container>
                             <u-animate name="bounceInLeft" delay="1s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
@@ -159,7 +152,8 @@ export default {
             iphonexrLeftPosition: -500,
             iphonexrRotate: 0,
             opacityPrize: 0,
-            status: ''
+            status: '',
+            countdownDate: 'May 18, 2020'
         }
     },
     computed: {
@@ -225,7 +219,7 @@ export default {
 
 .tagline:after {
     position: absolute;
-    bottom: 19px;
+    bottom: 16px;
     content: 'R';
     font-weight: 900;
     font-size: 12px;
@@ -251,6 +245,12 @@ svg {
     background: #0b345d;
     background-image: linear-gradient(155deg, #6b9dd0 0%, #e0f0ff 50%, #f6f6f6 100%);
     color: #222;
+}
+
+#wave h3,
+#wave p {
+    position: relative;
+    z-index: 5;
 }
 
 #reg {
@@ -376,14 +376,6 @@ svg {
     min-height: 150px;
 }
 
-#second .steps {
-    display: flex;
-    justify-content: center;
-}
-
-#steps {
-    max-width: 100%;
-}
 
 .my-card {
     position: absolute;

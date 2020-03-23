@@ -8,7 +8,7 @@
                         <span class="input-group-addon"><i class="fas fa-phone"></i></span>
                     </label>
                 </div>
-                <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'+7 (###) ###-##-##'">
+                <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'8 (###) ###-##-##'">
             </div>
             <div class="input-group">
                  <div class="input-group-prepend">
@@ -18,19 +18,20 @@
                 </div>
                 <input type="password" class="form-control" placeholder="Пароль" v-model="password">
             </div>
+            <div v-if="errorLog" class="alert alert-dismissible alert-danger">{{ errorLog }}</div>
             <button type="submit" class="btn btn-primary btn-block">Войти в личный кабинет</button>
         </form>
         <br>
-        <p @click="showRestorePassword" class="res-pass">
-            {{ rememberPass }}
-        </p>
         <form @submit.prevent="restorePassword" :class="restoreFormVisibility">
             <div class="form-group">
                 <input type="email" class="form-control" placeholder="Введите электронную почту" v-model="restorePasswordEmail">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Восстановить пароль</button>
+            <br>
         </form>
-        <div v-if="errorLog" class="alert alert-dismissible alert-danger">{{ errorLog }}</div>
+        <p @click="showRestorePassword" class="res-pass">
+            {{ rememberPass }}
+        </p>
     </div>
 </template>
 <script>
@@ -48,6 +49,7 @@ export default {
             restoreFormVisibility: 'hide',
             loginForm: 'show',
             rememberPass: 'Я не помню пароль'
+
         }
     },
     methods: {
@@ -58,8 +60,7 @@ export default {
             }
             this.$store.dispatch('login', data)
                 .then(
-                    () => this.$router.push('/secure'),
-                    this.$modal.hide('hello-world')
+                    () => this.$router.push('/secure')
                 )
                 .catch(err => console.log(err))
         },

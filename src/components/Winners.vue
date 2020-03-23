@@ -7,7 +7,25 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                    <p>19.03.2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
+                                <div class="caption">
+                                    <h5>Александр Александров</h5>
+                                    <Countdown :deadline="countdownDate"></Countdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -15,7 +33,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -23,7 +41,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -31,7 +49,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -39,7 +57,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -47,18 +65,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
-                                <div class="caption">
-                                    <h5>Александр Александров</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br><br><br><br><br>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -66,7 +73,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -74,7 +81,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -82,7 +89,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -90,15 +97,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
-                                <div class="caption">
-                                    <h5>Александр Александров</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="thumbnail">
-                                <img src="img/iphonexr1.png" alt="" class="img-responsive">
+                                <img src="img/iphone_winner.png" alt="" class="img-responsive">
                                 <div class="caption">
                                     <h5>Александр Александров</h5>
                                 </div>
@@ -115,33 +114,43 @@
 <script>
 import Footer from '@/components/Footer.vue'
 import { UAnimateContainer, UAnimate } from 'vue-wow'
+import Countdown from 'vuejs-countdown'
 export default {
     components: {
         Footer,
         UAnimateContainer,
-        UAnimate
+        UAnimate,
+        Countdown
     },
     data() {
         return {
-
+            countdownDate: 'May 18, 2020'        
         }
     }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.drops{
-	margin-top: 50px;
+.drops {
+    margin-top: 50px;
+    background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
+    position: relative;
 }
-.img-responsive{
+
+.img-responsive {
     max-width: 100%;
 }
-.img-responsive:hover{
+
+/*.img-responsive:hover {
     transform: rotateY(180deg);
     transition: all 1s;
-}
-h5{
+}*/
+
+.caption h5, .caption p {
     color: #0e4194;
     text-align: center;
+}
+.thumbnail{
+    margin: 20px 0;
 }
 </style>

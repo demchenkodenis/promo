@@ -2,11 +2,6 @@
     <div id="app">
         <modal class="modal-rules" name="rules" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
                 <h5>Правила</h5>
-                <div slot="top-right">
-                    <span @click="$modal.hide('hello-world')" style="cursor: pointer;">
-                        <span aria-hidden="true">&times;</span>
-                    </span>
-                </div>
                 <div id="tabs" class="container-tabs">
                     <div class="content">
                         <Rules />
@@ -15,11 +10,6 @@
         </modal>
         <modal class="modal-reg" name="hello-world" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
                 <h5>Регистрация / Личный кабинет</h5>
-                <div slot="top-right">
-                    <span @click="$modal.hide('hello-world')" style="cursor: pointer;">
-                        <span aria-hidden="true">&times;</span>
-                    </span>
-                </div>
                 <div id="tabs" class="container-tabs">
                     <div class="tabs">
                         <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Регистрация</a>
@@ -134,6 +124,9 @@ export default {
 .f-size-24 {
     font-size: 24px;
 }
+.f-size-35 {
+    font-size: 35px;
+}
 
 .f-size-36 {
     font-size: 36px;
@@ -165,7 +158,7 @@ export default {
 
 #sun {
     position: absolute;
-    top: 0;
+    top: 40px;
     right: 100px;
     max-width: 100%;
     z-index: 1;

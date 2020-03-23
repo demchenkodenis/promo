@@ -25,7 +25,7 @@
                 <input type="email" class="form-control" placeholder="Электронная почта" v-model="email">
             </div>
             <div class="form-group">
-                <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'+7 (###) ###-##-##'">
+                <input type="tel" class="form-control" placeholder="Номер телефона" v-model="phone" masked="true" v-mask="'8 (###) ###-##-##'">
             </div>
             <div class="input-group ">
                 <input :type="passwordFieldType" class="form-control" placeholder="Придумайте пароль для входа в личный кабинет" v-model="password">
@@ -89,8 +89,7 @@ export default {
                 }
                 this.$store.dispatch('register', data)
                     .then(
-                        () => this.$router.push('/secure'),
-                        this.$modal.hide('hello-world')
+                        () => this.$router.push('/secure')
                     )
                     .catch(err => console.log(err))
             }
@@ -108,6 +107,9 @@ export default {
 <style scoped>
 form {
     margin: 30px;
+}
+p{
+    margin: 30px 10px 0 30px;
 }
 
 ul {

@@ -57,6 +57,7 @@
 <script>
 import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
+
 export default {
     components: {
         EnterPromo,
@@ -99,6 +100,7 @@ export default {
             .catch(function(error) {
                 console.log(error)
             });
+        this.$modal.hide('hello-world')    
     }
 }
 </script>
