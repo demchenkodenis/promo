@@ -78,7 +78,9 @@ export default {
             noError: '',
             is_admin: null,
             showPassIcon: 'fa fa-eye',
-            passwordFieldType: 'password'
+            passwordFieldType: 'password',
+            /* eslint-disable-next-line */
+            reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
         }
     },
     methods: {
@@ -86,7 +88,7 @@ export default {
             this.errors = []
             if (!this.name) this.errors.push('Требуется указать имя.')
             if (!this.lastname) this.errors.push('Требуется указать фамилию.')
-            if (!this.email) this.errors.push('Требуется указать e-mail.')
+            if (this.reg.test(this.email) == false) this.errors.push('Требуется указать валидный e-mail.')
             if (!this.phone) this.errors.push('Требуется указать телефон.')
             if (!this.password) this.errors.push('Требуется указать пароль.')
 
@@ -121,7 +123,8 @@ export default {
 form {
     margin: 30px;
 }
-p{
+
+p {
     margin: 30px 10px 0 30px;
 }
 
@@ -129,7 +132,8 @@ ul {
     margin: 0;
     padding: 0;
 }
-.errors li{
+
+.errors li {
     padding-left: 15px;
 }
 </style>
