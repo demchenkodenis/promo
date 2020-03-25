@@ -197,6 +197,7 @@ ul#nav li a.router-link-exact-active {
 /* modal */
 .modal-reg h5{
     padding: 15px;
+    color: #0e4194;
 }
 /* Style the tabs */
 .tabs {
@@ -235,9 +236,9 @@ ul#nav li a.router-link-exact-active {
 
 /* Styling for active tab */
 .tabs a.active {
-    background-color: #fff;
-    color: #484848;
-    border-bottom: 2px solid #fff;
+    background-color: yellow;
+    color: #0e4194;
+    border-bottom: 2px solid yellow;
     cursor: default;
 }
 

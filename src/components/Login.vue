@@ -28,6 +28,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Восстановить пароль</button>
             <br>
+            <p>{{ msgRestorePass }}</p>
         </form>
         <p @click="showRestorePassword" class="res-pass">
             {{ rememberPass }}
@@ -48,8 +49,8 @@ export default {
             restorePasswordEmail: '',
             restoreFormVisibility: 'hide',
             loginForm: 'show',
-            rememberPass: 'Я не помню пароль'
-
+            rememberPass: 'Я не помню пароль',
+            msgRestorePass: ''
         }
     },
     methods: {
@@ -65,11 +66,18 @@ export default {
                 .catch(err => console.log(err))
         },
         restorePassword() {
+            var self = this
             axios.post('/api/restorePassword.php', {
-                restoreEmail: this.restorePasswordEmail,
+                restoreEmail: this.restorePasswordEmail
             })
             .then(function (response) {
-                console.log(response);
+                self.msgRestorePass = response.data.msg
+                if(self.msgRestorePass == 'Новый пароль отправлен вам на указанную почту'){
+                    setTimeout(() => {
+                        self.loginForm = 'show'
+                        self.restoreFormVisibility = 'hide'
+                    }, 5000)
+                }
             })
             .catch(function (error) {
                 console.log(error);
