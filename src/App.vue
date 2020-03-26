@@ -1,29 +1,30 @@
 <template>
     <div id="app">
         <modal class="modal-rules" name="rules" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
-                <h5>Правила</h5>
-                <div id="tabs" class="container-tabs">
-                    <div class="content">
-                        <Rules />
-                    </div>
+            <h5>Правила</h5>
+            <div id="tabs" class="container-tabs">
+                <div class="content">
+                    <Rules />
                 </div>
+            </div>
         </modal>
+        <Feedback />
         <modal class="modal-reg" name="hello-world" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
-                <h5>Регистрация / Личный кабинет</h5>
-                <div id="tabs" class="container-tabs">
-                    <div class="tabs">
-                        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Регистрация</a>
-                        <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Личный кабинет</a>
+            <h5 class="blue-color">Регистрация / Личный кабинет</h5>
+            <div id="tabs" class="container-tabs">
+                <div class="tabs">
+                    <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Регистрация</a>
+                    <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Личный кабинет</a>
+                </div>
+                <div class="content">
+                    <div v-if="activetab === 1" class="tabcontent">
+                        <Registr />
                     </div>
-                    <div class="content">
-                        <div v-if="activetab === 1" class="tabcontent">
-                            <Registr />
-                        </div>
-                        <div v-if="activetab === 2" class="tabcontent">
-                            <Login />
-                        </div>
+                    <div v-if="activetab === 2" class="tabcontent">
+                        <Login />
                     </div>
                 </div>
+            </div>
         </modal>
         <div class="container">
             <div class="row">
@@ -49,13 +50,16 @@
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" @click="showFeedback">Обратная связь</a>
+                                </li>
                                 <li class="nav-item" v-if="!isLoggedIn">
                                     <button type="button" class="btn btn-primary" @click="showReg">
                                         Личный кабинет
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link class="nav-link" v-if="isLoggedIn" to="/secure">Личный кабинет</router-link>
+                                    <router-link class="nav-link" style="text-decoration: underline;" v-if="isLoggedIn" to="/secure">Здравствуйте {{ name }} {{ lastname }}</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -70,19 +74,26 @@
 import Login from '@/components/Login.vue'
 import Registr from '@/components/Registr.vue'
 import Rules from '@/components/Rules.vue'
+import Feedback from '@/components/Feedback.vue'
+import axios from 'axios'
 export default {
     components: {
         Login,
         Registr,
-        Rules
+        Rules,
+        Feedback
     },
     data() {
         return {
-            activetab: 1
+            activetab: 1,
+            name: '',
+            lastname: ''
         }
     },
     computed: {
-        isLoggedIn: function() { return this.$store.getters.isLoggedIn }
+        isLoggedIn: function() { 
+            return this.$store.getters.isLoggedIn
+        }
     },
     methods: {
         showReg() {
@@ -93,6 +104,30 @@ export default {
         },
         showRules() {
             this.$modal.show('rules')
+        },
+        hideFeedback() {
+            this.$modal.hide('modal-feedback')
+        },
+        showFeedback() {
+            this.$modal.show('modal-feedback')
+        }
+    },
+    mounted: function () {
+        const self = this
+        var id = localStorage.getItem('lkuid')
+        var token = localStorage.getItem('t');
+        if(id != null && token != null){
+            axios.post('/api/getUser.php', {
+                id: id,
+                token: token
+            })
+            .then(function(response) {
+                self.name = response.data.name
+                self.lastname = response.data.lastname
+            })
+            .catch(function(error) {
+                console.log(error)
+            });
         }
     }
 }
@@ -124,6 +159,7 @@ export default {
 .f-size-24 {
     font-size: 24px;
 }
+
 .f-size-35 {
     font-size: 35px;
 }
@@ -182,9 +218,10 @@ nav {
     padding: 0;
 }
 
-ul#nav li{
+ul#nav li {
     margin-left: 15px;
 }
+
 ul#nav li a {
     font-weight: bold;
     color: #555;
@@ -195,9 +232,10 @@ ul#nav li a.router-link-exact-active {
 }
 
 /* modal */
-.modal-reg h5{
+.modal-reg h5 {
     padding: 15px;
 }
+
 /* Style the tabs */
 .tabs {
     overflow: hidden;
@@ -216,15 +254,15 @@ ul#nav li a.router-link-exact-active {
     cursor: pointer;
     padding: 12px 24px;
     transition: background-color 0.2s;
-    border: 1px solid #ccc;
+    border: 1px solid #b6cff7;
     border-right: none;
-    background-color: #f1f1f1;
+    background-color: #fff;
     border-radius: 10px 10px 0 0;
     font-weight: bold;
 }
 
 .tabs a:last-child {
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #b6cff7;
 }
 
 /* Change background color of tabs on hover */
@@ -235,20 +273,22 @@ ul#nav li a.router-link-exact-active {
 
 /* Styling for active tab */
 .tabs a.active {
-    background-color: #fff;
-    color: #484848;
-    border-bottom: 2px solid #fff;
+    background-color: #b6cff7;
+    color: #fff;
+    border-bottom: 2px solid #b6cff7;
     cursor: default;
 }
 
 /* Style the tab content */
 .tabcontent {
     padding: 0 30px 0 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #b6cff7;
+    background: #b6cff7;
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { 
+@media (min-width: @screen-sm-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -270,7 +310,8 @@ ul#nav li a.router-link-exact-active {
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { 
+@media (min-width: @screen-md-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -293,12 +334,10 @@ ul#nav li a.router-link-exact-active {
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) {
+@media (min-width: @screen-lg-min) {}
 
-}
-
-@media (min-width: 1200px) and (max-width: 1440px){
-    #sun{
+@media (min-width: 1200px) and (max-width: 1440px) {
+    #sun {
         right: 50px;
         top: 40px
     }

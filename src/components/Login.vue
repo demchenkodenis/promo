@@ -86,7 +86,7 @@ export default {
 </script>
 <style scoped>
 .login-form {
-    margin: 5px 30px 30px 30px;
+    padding: 5px 30px 30px 30px;
 }
 
 ul {

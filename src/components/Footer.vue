@@ -67,8 +67,11 @@ import { UAnimateContainer, UAnimate } from 'vue-wow'
 export default {
     components: {
         UAnimateContainer,
-        UAnimate
+        UAnimate,
     },
+    methods: {
+        
+    }
 }
 </script>
 <style>

@@ -55,5 +55,6 @@ export default {
     text-align: center;
     font-size: 48px;
     margin: 30px 0;
+    border: 3px solid #0e4194;
 }
 </style>

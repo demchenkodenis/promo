@@ -48,7 +48,6 @@ export default new Vuex.Store({
                 axios({ url: '/api/auth.php', data: user, method: 'POST' })
                     .then(resp => {
                         if (resp.data.error.length > 0) {
-                            console.log(resp.data.error)
                             commit('errorLog', resp.data.error)
                         } else {
                             const token = resp.data.t

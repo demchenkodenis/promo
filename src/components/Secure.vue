@@ -14,10 +14,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
+                        <p class="text-center">Розыгрыш состоится через:</p>
+                        <p class="text-center">
+                                <Countdowns :deadline="countdownDates"></Countdowns>
+                            </p>
                         <div class="card bg-light">
-                            <div class="card-header">Данные аккаунта</div>
+                            <div class="card-header color-blue">Данные аккаунта</div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ name }} {{ lastname }}</h5>
+                                <h5 class="card-title color-blue">{{ name }} {{ lastname }}</h5>
                                 <p class="card-text"><i class="fas fa-envelope"></i> {{ email }}</p>
                                 <p class="card-text"><i class="fas fa-phone"></i> {{ phone }}</p>
                                 <p class="card-text"><i class="fas fa-calendar-alt"></i> {{ dateReg }}</p>
@@ -57,11 +61,12 @@
 <script>
 import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
-
+import Countdowns from 'vuejs-countdown'
 export default {
     components: {
         EnterPromo,
-        Footer
+        Footer,
+        Countdowns
     },
     data() {
         return {
@@ -71,7 +76,8 @@ export default {
             phone: '',
             dateReg: '',
             status: '',
-            codes: []
+            codes: [],
+            countdownDates: 'May 18, 2020'
         }
     },
     methods: {
@@ -100,7 +106,7 @@ export default {
             .catch(function(error) {
                 console.log(error)
             });
-        this.$modal.hide('hello-world')    
+        this.$modal.hide('hello-world') 
     }
 }
 </script>

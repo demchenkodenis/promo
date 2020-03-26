@@ -5,6 +5,8 @@
             <b>Пожалуйста исправьте указанные ошибки:</b>
             <ul class="errors">
                 <li v-for="error in errors" :key="error" class="alert alert-dismissible alert-danger">{{ error }}</li>
+                <a href="#" @click="showFeedback">Не получается зарегистрироваться? Напишите в тех.поддержку</a>
+                <Feedback />
             </ul>
         </p>
         <p v-if="countErrReg > 0">
@@ -52,10 +54,14 @@
     </div>
 </template>
 <script>
+import Feedback from '@/components/Feedback.vue'
 import { mask } from 'vue-the-mask'
 import { mapGetters } from 'vuex'
 export default {
     directives: { mask },
+    components: {
+        Feedback
+    },
     data() {
         return {
             name: '',
@@ -100,15 +106,20 @@ export default {
         switchVisibility() {
             this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
             this.showPassIcon = this.showPassIcon === 'fa fa-eye' ? 'fa fa-eye-slash' : 'fa fa-eye'
+        },
+        hideFeedback() {
+            this.$modal.hide('modal-feedback')
+        },
+        showFeedback() {
+            this.$modal.show('modal-feedback')
         }
-
     },
     computed: mapGetters(['errorRegistr', 'countErrReg']),
 }
 </script>
 <style scoped>
 form {
-    margin: 30px;
+    padding: 30px;
 }
 
 p {
