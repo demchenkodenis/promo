@@ -1,5 +1,8 @@
 <template>
     <div>
+        <modal class="modal-feedback" name="modal-feedback" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
+            <Feedback />
+        </modal>
         <p v-if="errors.length">
             <br>
             <b>Пожалуйста исправьте указанные ошибки:</b>
@@ -47,6 +50,10 @@
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
                 <a href="#">Я подтверждаю, что достиг(ла) 18-летнего возраста</a>
             </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="hidden" value="" disabled="" checked="">
+                <a href="#" @click="showFeedback">У меня возникла проблема с регистрацией.</a>
+            </div>
             <br>
             <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
         </form>
@@ -57,6 +64,7 @@
 import Feedback from '@/components/Feedback.vue'
 import { mask } from 'vue-the-mask'
 import { mapGetters } from 'vuex'
+import Feedback from '@/components/Feedback.vue'
 export default {
     directives: { mask },
     components: {
@@ -107,12 +115,18 @@ export default {
             this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
             this.showPassIcon = this.showPassIcon === 'fa fa-eye' ? 'fa fa-eye-slash' : 'fa fa-eye'
         },
+<<<<<<< HEAD
         hideFeedback() {
             this.$modal.hide('modal-feedback')
         },
         showFeedback() {
             this.$modal.show('modal-feedback')
         }
+=======
+        showFeedback() {
+            this.$modal.show('modal-feedback')
+        },
+>>>>>>> 385777ebecf7e2937d9d5ff5bd24f3033baf6426
     },
     computed: mapGetters(['errorRegistr', 'countErrReg']),
 }
