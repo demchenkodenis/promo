@@ -91,7 +91,7 @@ export default {
         }
     },
     computed: {
-        isLoggedIn: function() { 
+        isLoggedIn: function() {
             return this.$store.getters.isLoggedIn
         }
     },
@@ -112,22 +112,22 @@ export default {
             this.$modal.show('modal-feedback')
         }
     },
-    mounted: function () {
+    mounted: function() {
         const self = this
         var id = localStorage.getItem('lkuid')
         var token = localStorage.getItem('t');
-        if(id != null && token != null){
+        if (id != null && token != null) {
             axios.post('/api/getUser.php', {
-                id: id,
-                token: token
-            })
-            .then(function(response) {
-                self.name = response.data.name
-                self.lastname = response.data.lastname
-            })
-            .catch(function(error) {
-                console.log(error)
-            });
+                    id: id,
+                    token: token
+                })
+                .then(function(response) {
+                    self.name = response.data.name
+                    self.lastname = response.data.lastname
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
         }
     }
 }
@@ -274,15 +274,12 @@ ul#nav li a.router-link-exact-active {
 
 /* Styling for active tab */
 .tabs a.active {
-<<<<<<< HEAD
     background-color: #b6cff7;
     color: #fff;
     border-bottom: 2px solid #b6cff7;
-=======
-    background-color: yellow;
+    background-color: #b6cff7;
     color: #0e4194;
-    border-bottom: 2px solid yellow;
->>>>>>> 385777ebecf7e2937d9d5ff5bd24f3033baf6426
+    border-bottom: 2px solid #b6cff7;
     cursor: default;
 }
 

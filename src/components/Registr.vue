@@ -64,7 +64,6 @@
 import Feedback from '@/components/Feedback.vue'
 import { mask } from 'vue-the-mask'
 import { mapGetters } from 'vuex'
-import Feedback from '@/components/Feedback.vue'
 export default {
     directives: { mask },
     components: {
@@ -115,18 +114,12 @@ export default {
             this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
             this.showPassIcon = this.showPassIcon === 'fa fa-eye' ? 'fa fa-eye-slash' : 'fa fa-eye'
         },
-<<<<<<< HEAD
         hideFeedback() {
             this.$modal.hide('modal-feedback')
         },
         showFeedback() {
             this.$modal.show('modal-feedback')
         }
-=======
-        showFeedback() {
-            this.$modal.show('modal-feedback')
-        },
->>>>>>> 385777ebecf7e2937d9d5ff5bd24f3033baf6426
     },
     computed: mapGetters(['errorRegistr', 'countErrReg']),
 }
