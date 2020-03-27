@@ -55,7 +55,7 @@
                 <a href="#" @click="showFeedback">У меня возникла проблема с регистрацией.</a>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
         </form>
         <div v-html="noError"></div>
     </div>

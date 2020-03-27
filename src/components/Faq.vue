@@ -61,7 +61,22 @@
                                     </div>
                                     <div id="collapse3" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Акция проводится на территории Белгородской, Курской и Воронежской областей.</p>
+                                            <p>Акция проводится на территории Российской Федерации.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse15" aria-expanded="true" aria-controls="collapse15">
+                                                Нужно ли сохранять крышку с кодом?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse15" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Крышку с уникальным кодом необходимо сохранять до конца Акции. В случае выигрыша Приза крышку с кодом необходимо предоставить Организатору Акции.</p>
+                                            <p>Остались вопросы? Свяжитесь с нами по телефону горячей линии 8 800 600 75 77 или с помощью формы обратной связи.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +90,7 @@
                                     </div>
                                     <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <h5>В Акции участвует следующая продукция «Майская хрустальная»™ в промоупаковке:</h5>
+                                            <h5>В Акции участвует следующая продукция «Майская хрустальная»™ в промоупаковке с желтой крышкой:</h5>
                                             <p>Вода минеральная природная питьевая столовая негазированная 0,5л ПЭТ бутылка</p>
                                             <p>Вода минеральная природная питьевая столовая газированная 0,5л ПЭТ бутылка</p>
                                             <p>Вода минеральная природная питьевая столовая негазированная 1,5л ПЭТ бутылка</p>
@@ -97,6 +112,20 @@
                                             <p>Купить продукцию «Майская хрустальная» ™ объемом 0,5л, 1,5л, 5л в промоупаковке.</p>
                                             <p>Найти уникальный 10-ти значный код под крышкой (нанесен на каждую крышку продукции, участвующей в Акции). Однократно зарегистрироваться на сайте <a href="https://maycrystal-promo.ru/">maycrystal-promo.ru.</a></p>
                                             <p>Ввести код в поле «Зарегистрировать код» на сайте <a href="https://maycrystal-promo.ru/">maycrystal-promo.ru.</a> Каждый зарегистрированный Участник получает возможность выиграть Приз.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse16" aria-expanded="true" aria-controls="collapse16">
+                                                Как ввести символ Ø в промокоде?
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapse16" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>В промокоде символ "Ø" соответствует цифре ноль, а символ "О" соответствует букве на английской раскладке.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -226,21 +255,6 @@
                                     <div id="collapse14" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>Для получения приза Победителю необходимо приехать на территорию Организатора Акции.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse15" aria-expanded="true" aria-controls="collapse15">
-                                                Нужно ли сохранять крышку с кодом?
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapse15" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p>Крышку с уникальным кодом необходимо сохранять до конца Акции. В случае выигрыша Приза крышку с кодом необходимо предоставить Организатору Акции.</p>
-                                            <p>Остались вопросы? Свяжитесь с нами по телефону горячей линии 8 800 600 75 77 или с помощью формы обратной связи.</p>
                                         </div>
                                     </div>
                                 </div>

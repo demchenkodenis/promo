@@ -43,7 +43,7 @@
                             </ul>
                         </p>
                         <div class="text-center">
-                            <input type="submit" value="Отправить" class="btn btn-primary btn-block rounded-0 py-2">
+                            <input type="submit" value="Отправить" class="btn btn-primary btn-block">
                         </div>
                         <p v-if="msg" class="alert alert-dismissible alert-primary">
                             {{ msg }}

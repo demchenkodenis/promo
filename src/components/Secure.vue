@@ -3,8 +3,14 @@
         <div id="lk">
             <div class="container">
                 <div class="row" v-if="status == 1">
-                    <div class="col-md-12">
-                        <EnterPromo />
+                    <div class="col-md-6 offset-md-3">
+                        <div class="form-group">
+                            <input class="form-control form-control-lg" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                            <div v-if="promo.length == 10 && isPromoValid == true">
+                                <button class="btn btn-lg btn-primary btn-block" @click="enterPromoCode">Отправить</button>
+                            </div>
+                        </div>
+                        <h3>{{ msg }}</h3>
                     </div>
                 </div>
                 <div class="row" v-if="status == 2">
@@ -16,8 +22,8 @@
                     <div class="col-md-4">
                         <p class="text-center">Розыгрыш состоится через:</p>
                         <p class="text-center">
-                                <Countdowns :deadline="countdownDates"></Countdowns>
-                            </p>
+                            
+                        </p>
                         <div class="card bg-light">
                             <div class="card-header color-blue">Данные аккаунта</div>
                             <div class="card-body">
@@ -59,14 +65,14 @@
     </div>
 </template>
 <script>
-import EnterPromo from '@/components/EnterPromo.vue'
+const axios = require('axios')
+const promoCheckRegex = /^[A-Z0-9]+$/;
+import { mask } from 'vue-the-mask'
 import Footer from '@/components/Footer.vue'
-import Countdowns from 'vuejs-countdown'
 export default {
+    directives: { mask },
     components: {
-        EnterPromo,
-        Footer,
-        Countdowns
+        Footer
     },
     data() {
         return {
@@ -77,7 +83,9 @@ export default {
             dateReg: '',
             status: '',
             codes: [],
-            countdownDates: 'May 18, 2020'
+            promo: '',
+            maxPromo: 10,
+            msg: ''
         }
     },
     methods: {
@@ -86,6 +94,23 @@ export default {
                 .then(() => {
                     this.$router.push('/')
                 })
+        },
+        enterPromoCode() {
+            const self = this
+            axios.post('/api/enterPromo.php', {
+                    lkuid: localStorage.getItem('lkuid'),
+                    t: localStorage.getItem('t'),
+                    promo: this.promo
+                })
+                .then(function(response) {
+                    self.msg = response.data.msg
+                    if(self.msg == 'Промокод успешно введен'){
+                        self.$set(self.codes, self.codes.length, {date_code: response.data.date, code: response.data.promo})
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
         }
     },
     mounted() {
@@ -106,13 +131,24 @@ export default {
             .catch(function(error) {
                 console.log(error)
             });
-        this.$modal.hide('hello-world') 
-    }
+        this.$modal.hide('hello-world')
+    },
+    computed: {
+        isPromoValid() {
+            return promoCheckRegex.test(this.promo)
+        },
+    },
 }
 </script>
 <style scoped>
 #lk {
     background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
     padding-bottom: 50px;
+}
+#promocode {
+    text-align: center;
+    font-size: 48px;
+    margin: 30px 0;
+    border: 3px solid #0e4194;
 }
 </style>

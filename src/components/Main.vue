@@ -10,10 +10,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <h3 class="text-center start-action blue-color font-Pacifico">Первый розыгрыш состоится 18 мая</h3>
+                            <h3 class="text-center start-action blue-color font-Pacifico">Первый розыгрыш состоится 18 мая 2020г.</h3>
                             <h3 class="text-center start-action blue-color font-Pacifico">До начала первого розыгрыша осталось:</h3>
                             <p class="text-center">
                                 <Countdown :deadline="countdownDate"></Countdown>
+                            </p>
+                            <p>
+                                <vue-countdown-timer />
                             </p>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                             <u-animate name="bounceInLeft" delay="2s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                 <div class="level-img">
                                     <span>2</span>
-                                    <img src="img/prize.png" class="img-responsive" alt="">
+                                    <img src="img/kr.png" class="img-responsive" alt="">
                                     <img src="img/yellow-arrow.png" alt="">
                                 </div>
                                 <div class="level-text">
@@ -138,7 +141,7 @@ import { UAnimateContainer, UAnimate } from 'vue-wow'
 import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
 import Countdown from 'vuejs-countdown'
-
+import vue-countdown-timer from '@/components/CountdownMain.vue'
 export default {
     directives: { mask },
     components: {
@@ -146,7 +149,8 @@ export default {
         Countdown,
         Footer,
         UAnimateContainer,
-        UAnimate
+        UAnimate,
+        vue-countdown-timer
     },
     data() {
         return {
