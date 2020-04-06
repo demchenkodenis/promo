@@ -4,6 +4,7 @@
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <input class="form-control form-control-lg" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                    <span class="help-block blue-color">Символ "Ø" соответствует цифре ноль.</span>
                     <div v-if="promo.length == 10 && isPromoValid == true">
                         <button class="btn btn-lg btn-primary btn-block" @click="enterPromoCode">Отправить</button>
                     </div>
@@ -37,6 +38,7 @@ export default {
                 .then(function(response) {
                     console.log(response)
                     self.msg = response.data.msg
+                    self.promo = ''
                 })
                 .catch(function(error) {
                     console.log(error)
@@ -54,7 +56,7 @@ export default {
 #promocode {
     text-align: center;
     font-size: 48px;
-    margin: 30px 0;
+    margin: 10px 0;
     border: 3px solid #0e4194;
 }
 </style>

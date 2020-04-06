@@ -6,6 +6,7 @@
                     <div class="col-md-6 offset-md-3">
                         <div class="form-group">
                             <input class="form-control form-control-lg" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                            <span class="help-block blue-color">Символ "Ø" соответствует цифре ноль.</span>
                             <div v-if="promo.length == 10 && isPromoValid == true">
                                 <button class="btn btn-lg btn-primary btn-block" @click="enterPromoCode">Отправить</button>
                             </div>
@@ -21,8 +22,56 @@
                 <div class="row">
                     <div class="col-md-4">
                         <p class="text-center">Розыгрыш состоится через:</p>
-                        <p class="text-center">
-                            
+                        <p>
+                            <vue-countdown-timer
+                                @start_callback="startCallBack('event started')"
+                                @end_callback="endCallBack('event ended')"
+                                :start-time="startTime"
+                                :end-time="endTime"
+                                :interval="1000"
+                                :start-label="''"
+                                :end-label="''"
+                                label-position="begin"
+                                :end-text="'Event ended!'"
+                                :day-txt="'дней'"
+                                :hour-txt="'часов'"
+                                :minutes-txt="'минут'"
+                                :seconds-txt="'секунд'">
+                            <template slot="start-label" slot-scope="scope">
+                            <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
+                            <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
+                            </template>
+
+                            <template slot="countdown" slot-scope="scope">
+                            <div id="countdown-main">
+                                <div>
+                                    <p class="f-size-36 ">{{scope.props.days}}</p>
+                                    <p>{{scope.props.dayTxt}}</p>
+                                </div>
+                                <div>
+                                    <p class="f-size-36 ">: {{scope.props.hours}}</p>
+                                    <p>{{scope.props.hourTxt}}</p>
+                                </div>
+                                <div>
+                                    <p class="f-size-36 ">: {{scope.props.minutes}}</p>
+                                    <p>{{scope.props.minutesTxt}}</p>
+                                </div>
+                                <div>
+                                    <p class="f-size-36 ">: {{scope.props.seconds}}</p>
+                                    <p>{{scope.props.secondsTxt}}</p>
+                                </div>
+                            </div>
+                            </template>
+
+                            <template slot="end-label" slot-scope="scope">
+                            <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
+                            <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
+                            </template>
+
+                            <template slot="end-text" slot-scope="scope">
+                            <span style="color: green">{{ scope.props.endText}}</span>
+                            </template>
+                            </vue-countdown-timer>
                         </p>
                         <div class="card bg-light">
                             <div class="card-header color-blue">Данные аккаунта</div>
@@ -85,7 +134,9 @@ export default {
             codes: [],
             promo: '',
             maxPromo: 10,
-            msg: ''
+            msg: '',
+            startTime: '',
+            endTime: '',
         }
     },
     methods: {
@@ -107,10 +158,17 @@ export default {
                     if(self.msg == 'Промокод успешно введен'){
                         self.$set(self.codes, self.codes.length, {date_code: response.data.date, code: response.data.promo})
                     }
+                    self.promo = ''
                 })
                 .catch(function(error) {
                     console.log(error)
                 });
+        },
+        startCallBack: function (msg) {
+            console.log(msg)
+        },
+          endCallBack: function (msg) {
+            console.log(msg)
         }
     },
     mounted() {
@@ -132,6 +190,16 @@ export default {
                 console.log(error)
             });
         this.$modal.hide('hello-world')
+        //данные таймера до начала акции
+        this.$http.get('/api/getCountDown.php')
+            .then(function(response){
+                console.log(response)
+                self.startTime = response.data.start_time
+                self.endTime1 = response.data.end_time
+            })
+            .catch(function(error){
+                console.log(error)
+            })
     },
     computed: {
         isPromoValid() {
@@ -141,6 +209,17 @@ export default {
 }
 </script>
 <style scoped>
+#countdown-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#countdown-main div{
+    text-align: center;
+    margin: 0 3px;
+}
+
 #lk {
     background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
     padding-bottom: 50px;

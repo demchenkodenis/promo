@@ -12,11 +12,56 @@
                         <div class="col-md-6 offset-md-3">
                             <h3 class="text-center start-action blue-color font-Pacifico">Первый розыгрыш состоится 18 мая 2020г.</h3>
                             <h3 class="text-center start-action blue-color font-Pacifico">До начала первого розыгрыша осталось:</h3>
-                            <p class="text-center">
-                                <Countdown :deadline="countdownDate"></Countdown>
-                            </p>
                             <p>
-                                <vue-countdown-timer />
+                                <vue-countdown-timer
+                                  @start_callback="startCallBack('event started')"
+                                  @end_callback="endCallBack('event ended')"
+                                  :start-time="startTime"
+                                  :end-time="endTime"
+                                  :interval="1000"
+                                  :start-label="''"
+                                  :end-label="''"
+                                  label-position="begin"
+                                  :end-text="'Event ended!'"
+                                  :day-txt="'дней'"
+                                  :hour-txt="'часов'"
+                                  :minutes-txt="'минут'"
+                                  :seconds-txt="'секунд'">
+                                  <template slot="start-label" slot-scope="scope">
+                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
+                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
+                                  </template>
+                                
+                                  <template slot="countdown" slot-scope="scope">
+                                    <div id="countdown-main">
+                                        <div>
+                                            <p class="f-size-36 ">{{scope.props.days}}</p>
+                                            <p>{{scope.props.dayTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.hours}}</p>
+                                            <p>{{scope.props.hourTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.minutes}}</p>
+                                            <p>{{scope.props.minutesTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.seconds}}</p>
+                                            <p>{{scope.props.secondsTxt}}</p>
+                                        </div>
+                                    </div>
+                                  </template>
+                                
+                                  <template slot="end-label" slot-scope="scope">
+                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
+                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
+                                  </template>
+                                  
+                                  <template slot="end-text" slot-scope="scope">
+                                    <span style="color: green">{{ scope.props.endText}}</span>
+                                  </template>
+                                </vue-countdown-timer>
                             </p>
                         </div>
                     </div>
@@ -46,7 +91,7 @@
                         <div class="col-md-6">
                             <u-animate-container>
                                 <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <img src="img/bottles.png" id="bottles" alt="">
+                                    <img src="img/002.png" id="bottles" alt="">
                                 </u-animate>
                             </u-animate-container>
                         </div>
@@ -55,9 +100,9 @@
             </div>
         </section>
         <section id="second">
-            <img src="img/iphonexr_mini.png" alt="" id="iphonexr" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
-            <div>
-                <h3 id="prize" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
+            <img src="img/iphonexr_mini.png" alt="" id="iphonexr" class="hidden-xs hidden-sm" :style="{ left: iphonexrLeftPosition + 'px', transform: 'rotate(' + iphonexrRotate + 'deg)' }">
+            <div id="prize-text">
+                <h3 id="prize" class="hidden-xs hidden-sm" :style="{ opacity: opacityPrize }">Выиграй меня!!!</h3>
             </div>
             <div class="container">
                 <div class="row">
@@ -75,7 +120,7 @@
                             <u-animate name="bounceInLeft" delay="1s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                 <div class="level-img">
                                     <span>1</span>
-                                    <img src="img/bottles2.png" class="img-responsive" alt="">
+                                    <img src="img/002.png" class="img-responsive" alt="">
                                     <img src="img/yellow-arrow.png" alt="">
                                 </div>
                                 <div class="level-text">
@@ -120,7 +165,7 @@
                             <u-animate name="bounceInRight" delay="4s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                 <div class="level-img">
                                     <span>4</span>
-                                    <img src="img/iphones2.png" class="img-responsive" alt="">
+                                    <img src="img/IPhone.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="level-text">
                                     <h2 class="text-center blue-color">Получи</h2>
@@ -140,25 +185,23 @@ import { mask } from 'vue-the-mask'
 import { UAnimateContainer, UAnimate } from 'vue-wow'
 import EnterPromo from '@/components/EnterPromo.vue'
 import Footer from '@/components/Footer.vue'
-import Countdown from 'vuejs-countdown'
-import vue-countdown-timer from '@/components/CountdownMain.vue'
+
 export default {
     directives: { mask },
     components: {
         EnterPromo,
-        Countdown,
         Footer,
         UAnimateContainer,
-        UAnimate,
-        vue-countdown-timer
+        UAnimate
     },
     data() {
         return {
+            startTime: '',
+            endTime: '',
             iphonexrLeftPosition: -500,
             iphonexrRotate: 0,
             opacityPrize: 0,
             status: '',
-            countdownDate: 'May 18, 2020'
         }
     },
     computed: {
@@ -167,6 +210,7 @@ export default {
     mounted: function() {
         window.addEventListener('scroll', this.rotateIphone);
         const self = this
+        //данные статуса аккаунта
         this.$http.post('/api/secure.php', {
                 lkuid: localStorage.getItem('lkuid'),
                 t: localStorage.getItem('t')
@@ -177,6 +221,16 @@ export default {
             .catch(function(error) {
                 console.log(error)
             });
+        //данные таймера до начала акции
+        this.$http.get('/api/getCountDown.php')
+            .then(function(response){
+                console.log(response)
+                self.startTime = response.data.start_time
+                self.endTime1 = response.data.end_time
+            })
+            .catch(function(error){
+                console.log(error)
+            })
     },
     methods: {
         show() {
@@ -195,6 +249,12 @@ export default {
                 this.iphonexrRotate = 0
                 this.opacityPrize = 0
             }
+        },
+        startCallBack: function (msg) {
+            console.log(msg)
+        },
+          endCallBack: function (msg) {
+            console.log(msg)
         }
     }
 }
@@ -205,15 +265,20 @@ export default {
 }
 
 /* section first */
-
-#bottles {
-    transition: transform .2s;
-    width: 100%;
-    height: 100%;
+#countdown-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#bottles:hover {
-    transform: scale(1.1);
+#countdown-main div{
+    text-align: center;
+    margin: 0 3px;
+}
+
+#bottles {
+    width: 80%;
+    height: 80%;
 }
 
 .tagline {
@@ -318,16 +383,12 @@ svg {
     }
 }
 
-/*#gradient {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
-    height: 70px;
-}
-*/
 /* section second */
 #second {
     /*background: url('/img/leaves-pattern.png') repeat;*/
     background-image: linear-gradient(180deg, #fff 0%, #e0f0ff 50%, #6b9dd0 100%);
     position: relative;
+    margin-top: 15px;
 }
 
 #second #iphonexr {
@@ -396,7 +457,8 @@ svg {
     #second #iphonexr,
     #bottles,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text {
         display: none;
     }
 
@@ -419,7 +481,8 @@ svg {
     #second #iphonexr,
     #bottles,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text {
         display: none;
     }
 
@@ -436,13 +499,13 @@ svg {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-
     #clouds,
     #sun,
     #second #iphonexr,
     #bottles,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text {
         display: none;
     }
 
@@ -460,13 +523,13 @@ svg {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-
     #clouds,
     #sun,
     #second #iphonexr,
     #bottles,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text {
         display: none;
     }
 

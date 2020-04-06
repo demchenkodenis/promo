@@ -46,10 +46,10 @@
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
                 <a href="#">Я согласен(а) с пользовательским соглашением и согласен(а) на обработку персональных данных</a>
             </div>
-            <div class="form-check disabled">
+            <!-- <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
                 <a href="#">Я подтверждаю, что достиг(ла) 18-летнего возраста</a>
-            </div>
+            </div> -->
             <div class="form-check disabled">
                 <input class="form-check-input" type="hidden" value="" disabled="" checked="">
                 <a href="#" @click="showFeedback">У меня возникла проблема с регистрацией.</a>

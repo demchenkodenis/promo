@@ -1,13 +1,13 @@
 <template>
-    <modal class="modal-feedback" name="modal-feedback" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
+    <modal class="modal-feedback" name="modal-feedback" adaptive="true" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
         <div class="feedback-form">
             <!--Form with header-->
             <form @submit.prevent="submit">
                 <div class="card border-primary rounded-0">
                     <div class="card-header p-0">
+                        <button type="button" class="close" style="color: #222; margin: 10px;" data-dismiss="modal" aria-label="Close" @click="hideFeedback"><span aria-hidden="true">&times;</span></button>
                         <div class="bg-primary text-white text-center py-2">
                             <h3><i class="fa fa-envelope"></i> Обратная связь</h3>
-                            <!-- <p class="m-0">Con gusto te ayudaremos</p> -->
                         </div>
                     </div>
                     <div class="card-body p-3">
@@ -70,6 +70,9 @@ export default {
         }
     },
     methods: {
+        hideFeedback() {
+            this.$modal.hide('modal-feedback')
+        },
         submit() {
             this.errors = []
             if (!this.name) {

@@ -6,7 +6,8 @@ import Axios from 'axios'
 import VModal from 'vue-js-modal'
 import VueCountdownTimer from 'vuejs-countdown-timer'
 
-Vue.use(VModal, VueCountdownTimer)
+Vue.use(VModal)
+Vue.use(VueCountdownTimer)
 
 Vue.prototype.$http = Axios;
 

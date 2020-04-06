@@ -1,16 +1,10 @@
 <template>
     <div id="app">
-        <modal class="modal-rules" name="rules" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
-            <h5>Правила</h5>
-            <div id="tabs" class="container-tabs">
-                <div class="content">
-                    <Rules />
-                </div>
-            </div>
-        </modal>
         <Feedback />
-        <modal class="modal-reg" name="hello-world" height="auto" :scrollable="true" :delay="5" transition="ease-in-out">
+        <modal class="modal-reg" name="hello-world" height="auto" adaptive="true" :scrollable="true" :delay="5" transition="ease-in-out">
+            <button type="button" class="close" style="color: #222; margin: 10px;" data-dismiss="modal" aria-label="Close" @click="hideReg"><span aria-hidden="true">&times;</span></button>
             <h5 class="blue-color">Регистрация / Личный кабинет</h5>
+
             <div id="tabs" class="container-tabs">
                 <div class="tabs">
                     <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Регистрация</a>
@@ -45,7 +39,7 @@
                                     <router-link class="nav-link" to="/winners">Победители</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" @click="showRules">Правила</a>
+                                    <a href="img/rules.pdf" class="nav-link" target="_blank">Правила</a>
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
@@ -73,21 +67,20 @@
 <script>
 import Login from '@/components/Login.vue'
 import Registr from '@/components/Registr.vue'
-import Rules from '@/components/Rules.vue'
 import Feedback from '@/components/Feedback.vue'
 import axios from 'axios'
 export default {
     components: {
         Login,
         Registr,
-        Rules,
         Feedback
     },
     data() {
         return {
             activetab: 1,
             name: '',
-            lastname: ''
+            lastname: '',
+            minWidthModalRules: ''
         }
     },
     computed: {
@@ -194,8 +187,8 @@ export default {
 
 #sun {
     position: absolute;
-    top: 40px;
-    right: 100px;
+    top: 65px;
+    right: 10px;
     max-width: 100%;
     z-index: 1;
 }
@@ -298,7 +291,8 @@ ul#nav li a.router-link-exact-active {
     #second #iphonexr,
     #bottles,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text{
         display: none;
     }
 
@@ -310,18 +304,22 @@ ul#nav li a.router-link-exact-active {
     #main p,
     #main p span {
         font-size: 2rem;
+    }
+
+    #promocode{
+        font-size: 22px;
     }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-
     #clouds,
     #sun,
     #second #iphonexr,
     #second #prize,
     .red-arrow,
-    .red-arrow-2 {
+    .red-arrow-2,
+    #prize-text {
         display: none;
     }
 
@@ -333,6 +331,10 @@ ul#nav li a.router-link-exact-active {
     #main p,
     #main p span {
         font-size: 2rem;
+    }
+
+    #promocode{
+        font-size: 22px;
     }
 
 }
@@ -343,7 +345,7 @@ ul#nav li a.router-link-exact-active {
 @media (min-width: 1200px) and (max-width: 1440px) {
     #sun {
         right: 50px;
-        top: 40px
+        top: 65px
     }
 }
 </style>
