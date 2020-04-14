@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import store from '../store/index.js'
 import Main from '../views/Main.vue'
 import Prizes from '../views/Prizes.vue'
-// import Rules from '../views/Rules.vue'
+import Stats from '../views/dba3b523660d42d18441c0161e8431a8.vue'
 import Faq from '../views/Faq.vue'
 import Winners from '../views/Winners.vue'
 import Secure from '../components/Secure.vue'
@@ -21,11 +21,11 @@ const routes = [{
         name: 'prizes',
         component: Prizes
     },
-    // {
-    //     path: '/rules',
-    //     name: 'rules',
-    //     component: Rules
-    // },
+    {
+        path: '/dba3b523660d42d18441c0161e8431a8',
+        name: 'dba3b523660d42d18441c0161e8431a8',
+        component: Stats
+    },
     {
         path: '/faq',
         name: 'faq',

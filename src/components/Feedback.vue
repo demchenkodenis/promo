@@ -43,7 +43,7 @@
                             </ul>
                         </p>
                         <div class="text-center">
-                            <input type="submit" value="Отправить" class="btn btn-primary btn-block">
+                            <input type="submit" value="Отправить" class="btn btn-primary btn-block" :disabled="disableSubmitButton">
                         </div>
                         <p v-if="msg" class="alert alert-dismissible alert-primary">
                             {{ msg }}
@@ -65,6 +65,7 @@ export default {
             message: '',
             errors: [],
             msg: '',
+            disableSubmitButton: false,
             /* eslint-disable-next-line */
             reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
         }
@@ -97,11 +98,13 @@ export default {
                 .then(function(response) {
                     console.log(response)
                     self.msg = response.data.msg
+                    self.disableSubmitButton = true
                 })
                 .catch(function(error) {
                     console.log(error)
                 });
 
+  
         }
     }
 }

@@ -118,6 +118,7 @@ export default {
             this.$modal.hide('modal-feedback')
         },
         showFeedback() {
+            this.$modal.hide('hello-world')
             this.$modal.show('modal-feedback')
         }
     },
