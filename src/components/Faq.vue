@@ -17,7 +17,7 @@
                                     </div>
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Организатором акции является ООО «Майский». Юридический адрес: 308019, г. Белгород, ул. Восточная, д.71, оф. 410.</p>
+                                            <p>Организатором акции является ООО «Майский». Юридический адрес: 308019, г. Белгород, ул. Восточная, д.71</p>
                                         </div>
                                     </div>
                                 </div>

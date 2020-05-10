@@ -13,7 +13,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                <p>Адрес: 308019, г. Белгород, ул. Восточная, д.71, оф.310</p>
+                                <p>Адрес: 308019, г. Белгород, ул. Восточная, д.71</p>
                                 <p>Mail: <a href="mailto:td-mx@yandex.ru">td-mx@yandex.ru</a></p>
                                 <p>Cайт: <a href="http://may-crystal.ru/" target="_blank">may-crystal.ru</a></p>
                             </div>

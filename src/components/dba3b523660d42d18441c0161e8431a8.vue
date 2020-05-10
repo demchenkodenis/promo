@@ -25,6 +25,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Претензионный процент:
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <h3 class="text-center">{{ countFeedback }}%</h3>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -50,8 +62,6 @@
                     <button type="submit" class="btn btn-primary mb-2">Отправить</button>
                 </form>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 <p>Найти пользователя по e-mail</p>
                 <form class="form-inline" @submit.prevent="getUserInfoEmail">
@@ -128,7 +138,8 @@ export default {
             email: '',
             promo: '',
             maxPromo: 10,
-            msg: ''
+            msg: '',
+            countFeedback: ''
         }
     },
     methods: {
@@ -191,6 +202,7 @@ export default {
             .then(function(response) {
                 self.users = response.data.users
                 self.codes = response.data.codes
+                self.countFeedback = response.data.count_feedback
             })
             .catch(function(error) {
                 console.log(error)

@@ -48,9 +48,9 @@
                                     <a href="#" class="nav-link" @click="showFeedback">Обратная связь</a>
                                 </li>
                                 <li class="nav-item" v-if="!isLoggedIn">
-                                    <button type="button" class="btn btn-primary" @click="showReg">
+                                    <router-link class="nav-link btn btn-primary" style='color: #fff;' to="/loginreg">
                                         Личный кабинет
-                                    </button>
+                                    </router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link" style="text-decoration: underline;" v-if="isLoggedIn" to="/secure">Здравствуйте {{ name }} {{ lastname }}</router-link>
