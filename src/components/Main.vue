@@ -10,90 +10,77 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <h3 class="text-center start-action blue-color font-Pacifico">Первый розыгрыш состоится 18 мая 2020г.</h3>
-                            <h3 class="text-center start-action blue-color font-Pacifico">До начала первого розыгрыша осталось:</h3>
-                            <p>
-                                <vue-countdown-timer
-                                  @start_callback="startCallBack('event started')"
-                                  @end_callback="endCallBack('event ended')"
-                                  :start-time="startTime"
-                                  :end-time="endTime"
-                                  :interval="1000"
-                                  :start-label="''"
-                                  :end-label="''"
-                                  label-position="begin"
-                                  :end-text="'Event ended!'"
-                                  :day-txt="'дней'"
-                                  :hour-txt="'часов'"
-                                  :minutes-txt="'минут'"
-                                  :seconds-txt="'секунд'">
-                                  <template slot="start-label" slot-scope="scope">
-                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
-                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
-                                  </template>
-                                
-                                  <template slot="countdown" slot-scope="scope">
-                                    <div id="countdown-main">
-                                        <div>
-                                            <p class="f-size-36 ">{{scope.props.days}}</p>
-                                            <p>{{scope.props.dayTxt}}</p>
-                                        </div>
-                                        <div>
-                                            <p class="f-size-36 ">: {{scope.props.hours}}</p>
-                                            <p>{{scope.props.hourTxt}}</p>
-                                        </div>
-                                        <div>
-                                            <p class="f-size-36 ">: {{scope.props.minutes}}</p>
-                                            <p>{{scope.props.minutesTxt}}</p>
-                                        </div>
-                                        <div>
-                                            <p class="f-size-36 ">: {{scope.props.seconds}}</p>
-                                            <p>{{scope.props.secondsTxt}}</p>
-                                        </div>
-                                    </div>
-                                  </template>
-                                
-                                  <template slot="end-label" slot-scope="scope">
-                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
-                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
-                                  </template>
-                                  
-                                  <template slot="end-text" slot-scope="scope">
-                                    <span style="color: green">{{ scope.props.endText}}</span>
-                                  </template>
-                                </vue-countdown-timer>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div v-if="isLoggedIn && status == 1">
-                                <EnterPromo />
+                            <!-- <h3 class="text-center start-action blue-color font-Pacifico">Розыгрыш состоится 18 мая 2020г.</h3> -->
+                            <h3 class="text-center"><a href="https://vk.com/public193874059" target="_blank">Результат проведения розыгрыша</a></h3>
+                            <div>
+                                <h3 class="text-center start-action blue-color font-Pacifico">До начала следующего розыгрыша осталось:</h3>
+                                <p>
+                                    <vue-countdown-timer @start_callback="startCallBack('event started')" @end_callback="endCallBack('event ended')" :start-time="startTime" :end-time="endTime" :interval="1000" :start-label="''" :end-label="''" label-position="begin" :end-text="'Event ended!'" :day-txt="'дней'" :hour-txt="'часов'" :minutes-txt="'минут'" :seconds-txt="'секунд'">
+                                        <template slot="start-label" slot-scope="scope">
+                                            <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
+                                            <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
+                                        </template>
+                                        <template slot="countdown" slot-scope="scope">
+                                            <div id="countdown-main">
+                                                <div>
+                                                    <p class="f-size-36 ">{{scope.props.days}}</p>
+                                                    <p>{{scope.props.dayTxt}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="f-size-36 ">: {{scope.props.hours}}</p>
+                                                    <p>{{scope.props.hourTxt}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="f-size-36 ">: {{scope.props.minutes}}</p>
+                                                    <p>{{scope.props.minutesTxt}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="f-size-36 ">: {{scope.props.seconds}}</p>
+                                                    <p>{{scope.props.secondsTxt}}</p>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <template slot="end-label" slot-scope="scope">
+                                            <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
+                                            <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
+                                        </template>
+                                        <template slot="end-text" slot-scope="scope">
+                                            <span style="color: green">{{ scope.props.endText}}</span>
+                                        </template>
+                                    </vue-countdown-timer>
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <u-animate-container>
-                                <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <p class="font-Pacifico tagline blue-color f-size-35">
-                                        с 1 апреля по 18 октября 2020 года участвуй в акции от <br> «Майской хрустальной»™ и
-                                        получи возможность выиграть смартфон iPhone X
-                                    </p>
-                                    <p id="reg">
-                                        <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
-                                        <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Зарегистрировать код</button>
-                                        <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
-                                    </p>
-                                </u-animate>
-                            </u-animate-container>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div v-if="isLoggedIn && status == 1">
+                                    <EnterPromo />
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <u-animate-container>
-                                <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                    <img src="img/002.png" id="bottles" alt="">
-                                </u-animate>
-                            </u-animate-container>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <u-animate-container>
+                                    <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                        <p class="font-Pacifico tagline blue-color f-size-35">
+                                            с 1 апреля по 18 октября 2020 года участвуй в акции от <br> «Майской хрустальной»™ и
+                                            получи возможность выиграть смартфон iPhone X
+                                        </p>
+                                        <p id="reg">
+                                            <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
+                                            <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Зарегистрировать код</button>
+                                            <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
+                                        </p>
+                                    </u-animate>
+                                </u-animate-container>
+                            </div>
+                            <div class="col-md-6">
+                                <u-animate-container>
+                                    <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                        <img src="img/002.png" id="bottles" alt="">
+                                    </u-animate>
+                                </u-animate-container>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -165,7 +152,7 @@
                             <u-animate name="bounceInRight" delay="4s" duration=".5s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
                                 <div class="level-img">
                                     <span>4</span>
-                                    <img src="img/IPhone.png" class="img-responsive" alt="">
+                                    <img src="img/iphones.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="level-text">
                                     <h2 class="text-center blue-color">Получи</h2>
@@ -223,12 +210,12 @@ export default {
             });
         //данные таймера до начала акции
         this.$http.get('/api/getCountDown.php')
-            .then(function(response){
+            .then(function(response) {
                 console.log(response)
                 self.startTime = response.data.start_time
                 self.endTime1 = response.data.end_time
             })
-            .catch(function(error){
+            .catch(function(error) {
                 console.log(error)
             })
     },
@@ -250,10 +237,10 @@ export default {
                 this.opacityPrize = 0
             }
         },
-        startCallBack: function (msg) {
+        startCallBack: function(msg) {
             console.log(msg)
         },
-          endCallBack: function (msg) {
+        endCallBack: function(msg) {
             console.log(msg)
         }
     }
@@ -265,13 +252,13 @@ export default {
 }
 
 /* section first */
-#countdown-main{
+#countdown-main {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#countdown-main div{
+#countdown-main div {
     text-align: center;
     margin: 0 3px;
 }
@@ -499,6 +486,7 @@ svg {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,
@@ -523,6 +511,7 @@ svg {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
+
     #clouds,
     #sun,
     #second #iphonexr,

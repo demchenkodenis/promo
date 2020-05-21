@@ -10,19 +10,19 @@
                                 <thead>
                                     <tr>
                                         <th>№ п/п</th>
-                                        <th>Имя</th>
-                                        <th>Фамилия</th>
+                                        <th>Имя Фамилия</th>
                                         <th>Телефон</th>
                                         <th>Дата</th>
+                                        <th>Видео</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in winners" :key="item.id">
                                         <td>{{ index + 1 }}</td>
-                                        <td>{{ item.name }}</td>
-                                        <td>{{ item.lastname }}</td>
+                                        <td>{{ item.name }} {{ item.lastname }}</td>
                                         <td>{{ hidePhone[index] }}</td>
                                         <td>{{ item.start_time }}</td>
+                                        <td><a :href="item.video" target="_blank">Видео</a></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5">
@@ -140,7 +140,7 @@ export default {
     computed: {
         hidePhone: function(){
             return this.winners.map(function(item){
-                var str = item.phone[0] + item.phone[1] + item.phone[2] + item.phone[3] + '***' + item.phone[7] + item.phone[8] + '***' + item.phone[12] + item.phone[13] + item.phone[14] + item.phone[15] + item.phone[16] + item.phone[17]
+                var str = item.phone[0] + item.phone[1] + item.phone[2] + item.phone[3] + '***' + item.phone[7] + item.phone[8] + '***' + item.phone[12] + item.phone[13] + item.phone[14] + item.phone[15] + item.phone[16]
                 return str
             })
         }

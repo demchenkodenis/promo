@@ -1,5 +1,43 @@
 <template>
     <div class="container" id="stats">
+        <div class="jumbotron">
+            <h1 class="text-center" style="font-size: 3rem;">ТОП Участников</h1>
+            <div id="top">
+                <div class="row">
+                    <div class="col-md-4 offset-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">ТОP 1 <br>Количество зарегистрированных крышек: {{ top3[0].count_code }}</h5>
+                                <p class="card-text text-center">{{ top3[0].name }} {{ top3[0].lastname }}</p>
+                                <p class="card-text text-center">{{ top3[0].phone }} <br> {{ top3[0].email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">ТОP 2 <br>Количество зарегистрированных крышек: {{ top3[1].count_code }}</h5>
+                                <p class="card-text text-center">{{ top3[1].name }} {{ top3[1].lastname }}</p>
+                                <p class="card-text text-center">{{ top3[1].phone }} <br> {{ top3[1].email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">ТОP 3 <br>Количество зарегистрированных крышек: {{ top3[2].count_code }}</h5>
+                                <p class="card-text text-center">{{ top3[2].name }} {{ top3[2].lastname }}</p>
+                                <p class="card-text text-center">{{ top3[2].phone }} <br> {{ top3[2].email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
@@ -139,7 +177,8 @@ export default {
             promo: '',
             maxPromo: 10,
             msg: '',
-            countFeedback: ''
+            countFeedback: '',
+            top3: []
         }
     },
     methods: {
@@ -203,6 +242,7 @@ export default {
                 self.users = response.data.users
                 self.codes = response.data.codes
                 self.countFeedback = response.data.count_feedback
+                self.top3 = response.data.top3
             })
             .catch(function(error) {
                 console.log(error)
@@ -218,6 +258,10 @@ export default {
 <style scoped>
 #stats {
     margin-top: 50px;
+}
+
+#top {
+    margin-bottom: 50px;
 }
 
 p span {

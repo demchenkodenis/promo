@@ -21,6 +21,9 @@
                                 <p class="text-center">
                                     <a href="tel:88006007577">ГОРЯЧАЯ ЛИНИЯ 8 800 600 75 77</a>
                                 </p>
+                                <p class="text-center">
+                                    Звонки принимаются с 9:00 до 18:00 часов по московскому времени
+                                </p>
                                 <u-animate-container>
                                     <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
                                         <a class="footer-logo" href="/">
