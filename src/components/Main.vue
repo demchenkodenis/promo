@@ -11,6 +11,7 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
                             <!-- <h3 class="text-center start-action blue-color font-Pacifico">Розыгрыш состоится 18 мая 2020г.</h3> -->
+                            <br>
                             <h3 class="text-center"><a href="https://vk.com/public193874059" target="_blank">Результат проведения розыгрыша</a></h3>
                             <div>
                                 <h3 class="text-center start-action blue-color font-Pacifico">До начала следующего розыгрыша осталось:</h3>

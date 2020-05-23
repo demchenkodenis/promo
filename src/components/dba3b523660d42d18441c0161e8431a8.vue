@@ -78,37 +78,60 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>Проверить существование кода</p>
-                <form class="form-inline" @submit.prevent="getCode">
-                    <div class="form-group mb-2">
-                        <label for="code">Код</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Проверить существование кода</p>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
-                </form>
-                <p>{{ msg }}</p>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getCode">
+                            <div class="form-group mb-2">
+                                <label for="code">Код</label>
+                                <input class="form-control" type="text" placeholder="Зарегистрировать код" id="promocode" v-model="promo" @input="promo = $event.target.value.toUpperCase()" :maxlength="maxPromo">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p>{{ msg }}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <p>Найти пользователя по телефону</p>
-                <form class="form-inline" @submit.prevent="getUserInfo">
-                    <div class="form-group mb-2">
-                        <label for="phone">Найти пользователя</label>
-                        <input type="text" class="form-control" id="phone" v-model="phone" placeholder="Номер телефона" masked="true" v-mask="'8 (###) ###-##-##'">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
-                </form>
+            <div class="col-md-12">
+                <h3 class="text-center">Поиск пользователей</h3>
             </div>
             <div class="col-md-6">
-                <p>Найти пользователя по e-mail</p>
-                <form class="form-inline" @submit.prevent="getUserInfoEmail">
-                    <div class="form-group mb-2">
-                        <label for="email">Найти пользователя</label>
-                        <input type="email" class="form-control" id="email" v-model="email" placeholder="Номер e-mail">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Найти пользователя по телефону</p>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
-                </form>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getUserInfo">
+                            <div class="form-group mb-2">
+                                <label for="phone">Найти пользователя</label>
+                                <input type="text" class="form-control" id="phone" v-model="phone" placeholder="Номер телефона" masked="true" v-mask="'8 (###) ###-##-##'">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Найти пользователя по e-mail</p>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getUserInfoEmail">
+                            <div class="form-group mb-2">
+                                <label for="email">Найти пользователя</label>
+                                <input type="email" class="form-control" id="email" v-model="email" placeholder="Номер e-mail">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -118,10 +141,30 @@
                         Информация о пользователе:
                     </div>
                     <div class="card-body">
-                        <p><span>Имя:</span> {{ userInfo.name }}</p>
-                        <p><span>Фамилия:</span> {{ userInfo.lastname }}</p>
-                        <p><span>E-mail:</span> {{ userInfo.email }}</p>
-                        <p><span>Телефон:</span> {{ userInfo.phone }}</p>
+                        <p>
+                            <span>Имя:</span> {{ userInfo.name }}
+                        </p>
+                        <p>
+                            <span>Фамилия:</span> {{ userInfo.lastname }}
+                        </p>
+                        <p>
+                            <span v-if="!isEditingEmail">E-mail: {{ userInfo.email }}</span>
+                            <input type="text" class="form-control" v-model="userInfo.email" v-value="userInfo.email" v-else>
+                            <button class="btn btn-primary btn-sm" @click="editEmail" v-if="!isEditingEmail">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button class="btn btn-success btn-sm" @click="saveEmail" v-if="isEditingEmail"><i class="fas fa-check"></i></button>
+                            <button class="btn btn-danger btn-sm" @click="cancelEmail" v-if="isEditingEmail"><i class="far fa-window-close"></i></button>
+                        </p>
+                        <p>
+                            <span v-if="!isEditingPhone">Телефон: {{ userInfo.phone }}</span>
+                            <input type="text" class="form-control" v-model="userInfo.phone" v-value="userInfo.phone" v-else>
+                            <button class="btn btn-primary btn-sm" @click="editPhone" v-if="!isEditingPhone">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button class="btn btn-success btn-sm" @click="savePhone" v-if="isEditingPhone"><i class="fas fa-check"></i></button>
+                            <button class="btn btn-danger btn-sm" @click="cancelPhone" v-if="isEditingPhone"><i class="far fa-window-close"></i></button>
+                        </p>
                         <p><span>Дата регистрация:</span> {{ userInfo.date_registration }}</p>
                         <p v-if="userInfo.status == 1"><span>Статус аккаунта:</span> Активирован</p>
                         <p v-else><span>Статус аккаунта:</span> Не активирован <button class="btn btn-primary" @click="activate">Активировать</button></p>
@@ -158,6 +201,32 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Количество зарегистрированных пользователей за определенную дату <br>Введите даты</p>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getCountUsersDate">
+                            <div class="form-group mb-2">
+                                <label>Первая дата</label>
+                                <input type="date" class="form-control" v-model="firstDate">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label>Вторая дата</label>
+                                <input type="date" class="form-control" v-model="lastDate">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center" v-if="count_users_date">Количество пользователей за период с {{ firstDate }} по {{ lastDate }}</p>
+                        <p class="text-center">{{count_users_date}} пользователей</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -178,10 +247,68 @@ export default {
             maxPromo: 10,
             msg: '',
             countFeedback: '',
-            top3: []
+            top3: [],
+            count_users_date: '',
+            firstDate: '',
+            lastDate: '',
+            isEditingEmail: false,
+            isEditingPhone: false
         }
     },
     methods: {
+        editEmail() {
+            this.isEditingEmail = true
+        },
+        saveEmail() {
+            this.$http.post('/api/updateEmailUser.php', {
+                    id: this.userInfo.id,
+                    email: this.userInfo.email
+                })
+                .then(function(response) {
+                    alert(response.data.ok)
+                    this.cancelEmail
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        cancelEmail() {
+            this.userInfo.email = this.userInfo.email
+            this.isEditingEmail = false
+        },
+        editPhone() {
+            this.isEditingPhone = true
+        },
+        savePhone() {
+            this.$http.post('/api/updatePhoneUser.php', {
+                    id: this.userInfo.id,
+                    phone: this.userInfo.phone
+                })
+                .then(function(response) {
+                    alert(response.data.ok)
+                    this.cancelPhone
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        cancelPhone() {
+            this.userInfo.email = this.userInfo.email
+            this.isEditingPhone = false
+        },
+        getCountUsersDate() {
+            const self = this
+            this.$http.post('/api/getCountUsersDate.php', {
+                    firstDate: this.firstDate,
+                    lastDate: this.lastDate
+                })
+                .then(function(response) {
+                    self.count_users_date = response.data.count_users
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
         getUserInfo() {
             const self = this
             this.$http.post('/api/getUserInfo.php', {
@@ -270,12 +397,19 @@ p span {
 
 form {
     margin: 30px 0;
-    border: 1px solid #aaa;
-    padding: 30px;
+    padding: 15px;
     border-radius: 6px;
 }
 
 form input {
     margin: 0 10px;
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.btn-sm {
+    margin: 2px 5px;
 }
 </style>
