@@ -166,8 +166,17 @@
                             <button class="btn btn-danger btn-sm" @click="cancelPhone" v-if="isEditingPhone"><i class="far fa-window-close"></i></button>
                         </p>
                         <p><span>Дата регистрация:</span> {{ userInfo.date_registration }}</p>
-                        <p v-if="userInfo.status == 1"><span>Статус аккаунта:</span> Активирован</p>
-                        <p v-else><span>Статус аккаунта:</span> Не активирован <button class="btn btn-primary" @click="activate">Активировать</button></p>
+                        <p v-if="userInfo.status == 1">
+                            <span>Статус аккаунта:</span> Активирован
+                            <button class="btn btn-danger" @click="ban">БАН!</button>
+                        </p>
+                        <p v-else-if="userInfo.status == 2">
+                            <span>Статус аккаунта:</span> Забанен
+                        </p>
+                        <p v-else>
+                            <span>Статус аккаунта:</span> Не активирован
+                            <button class="btn btn-primary" @click="activate">Активировать</button>
+                        </p>
                         <p>{{ msgActivate }}</p>
                     </div>
                 </div>
@@ -226,6 +235,54 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Количество зарегистрированных промокодов за определенную дату <br>Введите даты</p>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getCountCodesDate">
+                            <div class="form-group mb-2">
+                                <label>Первая дата</label>
+                                <input type="date" class="form-control" v-model="firstDateCode">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label>Вторая дата</label>
+                                <input type="date" class="form-control" v-model="lastDateCode">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center" v-if="count_codes_date">Количество кодов за период с {{ firstDateCode }} по {{ lastDateCode }}</p>
+                        <p class="text-center">{{count_codes_date}} кодов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline" @submit.prevent="getCountCodesUser">
+                    <div class="form-group mb-2">
+                        <label>Количество кодов</label>
+                        <input type="text" class="form-control" v-model="count_codes">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <tr v-for="(item, index) in list_users_period" :key="item.id">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ item.lastname }}</td>
+                        <td>{{ item.phone }}</td>
+                        <td>{{ item.codes }}</td>
+                        <td><button class="btn btn-danger" @click="banUserPeriod(item.id)">Бан</button></td>
+                        <td v-if="item.ban != null">Не участвует</td>
+                        <td v-else>Участвует</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>
@@ -249,6 +306,9 @@ export default {
             countFeedback: '',
             top3: [],
             count_users_date: '',
+            count_codes_date: '',
+            count_codes: '',
+            list_users_period: [],
             firstDate: '',
             lastDate: '',
             isEditingEmail: false,
@@ -256,6 +316,40 @@ export default {
         }
     },
     methods: {
+        banUserPeriod(id){
+            this.$http.post('/api/banUserPeriod.php', {
+                    id: id
+                })
+                .then(function(response) {
+                    alert(response.data.ok)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        getCountCodesUser(){
+            const self = this
+            this.$http.post('/api/usersPeriod.php', {
+                    count_codes: this.count_codes
+                })
+                .then(function(response) {
+                    self.list_users_period = response.data.users_period
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        ban() {
+            this.$http.post('/api/banUser.php', {
+                    id: this.userInfo.id
+                })
+                .then(function(response) {
+                    alert(response.data.ok)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
         editEmail() {
             this.isEditingEmail = true
         },
@@ -304,6 +398,19 @@ export default {
                 })
                 .then(function(response) {
                     self.count_users_date = response.data.count_users
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        getCountCodesDate() {
+            const self = this
+            this.$http.post('/api/getCountCodesDate.php', {
+                    firstDate: this.firstDateCode,
+                    lastDate: this.lastDateCode
+                })
+                .then(function(response) {
+                    self.count_codes_date = response.data.count_codes
                 })
                 .catch(function(error) {
                     console.log(error)

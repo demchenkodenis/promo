@@ -52,36 +52,36 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div v-if="isLoggedIn && status == 1">
-                                    <EnterPromo />
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div v-if="isLoggedIn && status == 1">
+                                <EnterPromo />
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 col-lg-6">
-                                <u-animate-container>
-                                    <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                        <p class="font-Pacifico tagline blue-color f-size-35">
-                                            с 1 апреля по 18 октября 2020 года участвуй в акции от <br> «Майской хрустальной»™ и
-                                            получи возможность выиграть смартфон iPhone X
-                                        </p>
-                                        <p id="reg">
-                                            <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
-                                            <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Зарегистрировать код</button>
-                                            <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
-                                        </p>
-                                    </u-animate>
-                                </u-animate-container>
-                            </div>
-                            <div class="col-md-6">
-                                <u-animate-container>
-                                    <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
-                                        <img src="img/002.png" id="bottles" alt="">
-                                    </u-animate>
-                                </u-animate-container>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <u-animate-container>
+                                <u-animate name="bounceInDown" delay="0s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                    <p class="font-Pacifico tagline blue-color f-size-35">
+                                        с 1 апреля по 18 октября 2020 года участвуй в акции от <br> «Майской хрустальной»™ и
+                                        получи возможность выиграть смартфон iPhone X
+                                    </p>
+                                    <p id="reg">
+                                        <span class="red-arrow bounce-3" v-if="!isLoggedIn"></span>
+                                        <button class="btn btn-primary btn-lg" @click="show" v-if="!isLoggedIn">Зарегистрировать код</button>
+                                        <span class="red-arrow-2 bounce-4" v-if="!isLoggedIn"></span>
+                                    </p>
+                                </u-animate>
+                            </u-animate-container>
+                        </div>
+                        <div class="col-md-6">
+                            <u-animate-container>
+                                <u-animate name="bounceInDown" delay="1s" duration="2s" :iteration="1" :offset="0" animateClass="animated" :begin="false">
+                                    <img src="img/002.png" id="bottles" alt="">
+                                </u-animate>
+                            </u-animate-container>
                         </div>
                     </div>
                 </div>

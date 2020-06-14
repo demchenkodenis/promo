@@ -4,63 +4,47 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-center">{{ currDate }}</h2>
+                        <h2 class="text-center" style="font-size: 42px;">{{ currDate }}</h2>
+                        <p>
+                            <vue-countdown-timer :start-time="startTime" :end-time="endTime" :interval="1000" :start-label="''" :end-label="''" label-position="begin" :end-text="'Event ended!'" :day-txt="'дней'" :hour-txt="'часов'" :minutes-txt="'минут'" :seconds-txt="'секунд'">
+                                <template slot="start-label" slot-scope="scope">
+                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
+                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
+                                </template>
+                                <template slot="countdown" slot-scope="scope">
+                                    <div id="countdown-main">
+                                        <div>
+                                            <p class="f-size-36 ">{{scope.props.days}}</p>
+                                            <p>{{scope.props.dayTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.hours}}</p>
+                                            <p>{{scope.props.hourTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.minutes}}</p>
+                                            <p>{{scope.props.minutesTxt}}</p>
+                                        </div>
+                                        <div>
+                                            <p class="f-size-36 ">: {{scope.props.seconds}}</p>
+                                            <p>{{scope.props.secondsTxt}}</p>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template slot="end-label" slot-scope="scope">
+                                    <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
+                                    <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
+                                </template>
+                                <template slot="end-text" slot-scope="scope">
+                                    <span style="color: green;">{{ scope.props.endText}}</span>
+                                </template>
+                            </vue-countdown-timer>
+                        </p>
                     </div>
-                    <p>
-                                                <vue-countdown-timer
-                                                    @start_callback="startCallBack('event started')"
-                                                    @end_callback="endCallBack('event ended')"
-                                                    :start-time="startTime"
-                                                    :end-time="endTime"
-                                                    :interval="1000"
-                                                    :start-label="''"
-                                                    :end-label="''"
-                                                    label-position="begin"
-                                                    :end-text="'Event ended!'"
-                                                    :day-txt="'дней'"
-                                                    :hour-txt="'часов'"
-                                                    :minutes-txt="'минут'"
-                                                    :seconds-txt="'секунд'">
-                                                <template slot="start-label" slot-scope="scope">
-                                                <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
-                                                <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
-                                                </template>
-
-                                                <template slot="countdown" slot-scope="scope">
-                                                <div id="countdown-main">
-                                                    <div>
-                                                        <p class="f-size-36 ">{{scope.props.days}}</p>
-                                                        <p>{{scope.props.dayTxt}}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="f-size-36 ">: {{scope.props.hours}}</p>
-                                                        <p>{{scope.props.hourTxt}}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="f-size-36 ">: {{scope.props.minutes}}</p>
-                                                        <p>{{scope.props.minutesTxt}}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="f-size-36 ">: {{scope.props.seconds}}</p>
-                                                        <p>{{scope.props.secondsTxt}}</p>
-                                                    </div>
-                                                </div>
-                                                </template>
-
-                                                <template slot="end-label" slot-scope="scope">
-                                                <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.startLabel}}:</span>
-                                                <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'end'">{{scope.props.endLabel}}:</span>
-                                                </template>
-
-                                                <template slot="end-text" slot-scope="scope">
-                                                <span style="color: green">{{ scope.props.endText}}</span>
-                                                </template>
-                                                </vue-countdown-timer>
-                                            </p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-center"><button class="btn btn-primary btn-lg" disabled @click="getWinner">НАЧАТЬ РОЗЫГРЫШ</button></p>
+                        <p class="text-center"><button class="btn btn-primary btn-lg" style="font-size: 32px;" @click="getWinner">НАЧАТЬ РОЗЫГРЫШ</button></p>
                         <div v-if="spinner">
                             <h2 class="text-center">Определение победителя</h2>
                         </div>
@@ -134,14 +118,7 @@ export default {
             setTimeout(() => this.spinner = false, 54000)
             setTimeout(() => this.winnerText = 'Победитель ' + this.userName.name + ' ' + this.userName.lastname, 55000)
             setTimeout(this.winner, 5000)
-        },
-        startCallBack: function (msg) {
-            console.log(msg)
-        },
-          endCallBack: function (msg) {
-            console.log(msg)
         }
-
     },
     mounted() {
         this.currentDate()
@@ -167,13 +144,13 @@ export default {
     height: 100vh;
 }
 
-#countdown-main{
+#countdown-main {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#countdown-main div{
+#countdown-main div {
     text-align: center;
     margin: 0 3px;
 }
