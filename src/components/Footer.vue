@@ -3,7 +3,7 @@
         <div id="save-probe">
             <u-animate-container>
                 <u-animate name="flash" delay="1s" duration="2s" :iteration="1000" :offset="50" animateClass="animated" :begin="false">
-                    <h4>сохраняй крышку с кодом до окончания акции</h4>
+                    <h4>сохраняйте крышки</h4>
                 </u-animate>
             </u-animate-container>
         </div>
@@ -22,8 +22,9 @@
                                     <a href="tel:88006007577">ГОРЯЧАЯ ЛИНИЯ 8 800 600 75 77</a>
                                 </p>
                                 <p class="text-center">
-                                    Звонки принимаются с 9:00 до 18:00 часов по московскому времени
+                                    Звонки принимаются в будние дни с 9:00 до 18:00 часов по московскому времени
                                 </p>
+                                
                                 <u-animate-container>
                                     <u-animate name="pulse" delay="1s" duration="1s" :iteration="1000" :offset="0" animateClass="animated" :begin="false">
                                         <a class="footer-logo" href="/">
@@ -47,9 +48,6 @@
                                         <a class="nav-link" href="#">Победители</a>
                                     </li>
                                 </ul> -->
-                                <p>
-                                    <a href="#">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</a>
-                                </p>
                                 <p class="blue-color">© ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
                                 <p>
                                     <a href="https://www.instagram.com/may.crystal31/?igshid=8k9k1ota9xr4" target="_blank">

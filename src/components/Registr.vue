@@ -40,11 +40,11 @@
             </div>
             <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
-                <a href="#">Я согласен(а) c правилами Акции</a>
+                <a href="/img/rules.pdf">Я согласен(а) c правилами Акции</a>
             </div>
             <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
-                <a href="#">Я согласен(а) с пользовательским соглашением и согласен(а) на обработку персональных данных</a>
+                <a href="docs/sogl.pdf">Я согласен(а) на обработку персональных данных</a>
             </div>
             <!-- <div class="form-check disabled">
                 <input class="form-check-input" type="checkbox" value="" disabled="" checked="">
