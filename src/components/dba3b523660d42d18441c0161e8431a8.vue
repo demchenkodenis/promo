@@ -271,15 +271,23 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <table class="table table-hover">
+                <table class="table table-hover table-responsive">
+                    <tr v-if="list_users_period.length > 0">
+                        <td>#</td>
+                        <td>Фамилия</td>
+                        <td>Телефон</td>
+                        <td>Кол-во кодов</td>
+                        <td>Исключить</td>
+                        <td>Статус</td>
+                    </tr>
                     <tr v-for="(item, index) in list_users_period" :key="item.id">
                         <td>{{ index + 1 }}</td>
                         <td>{{ item.lastname }}</td>
                         <td>{{ item.phone }}</td>
                         <td>{{ item.codes }}</td>
                         <td><button class="btn btn-danger" @click="banUserPeriod(item.id)">Бан</button></td>
-                        <td v-if="item.ban != null">Не участвует</td>
-                        <td v-else>Участвует</td>
+                        <td v-if="item.ban != null" class="alert alert-danger">Не участвует</td>
+                        <td v-else class="alert alert-success">Участвует</td>
                     </tr>
                 </table>
             </div>
