@@ -316,7 +316,7 @@ export default {
         }
     },
     methods: {
-        banUserPeriod(id){
+        banUserPeriod(id) {
             this.$http.post('/api/banUserPeriod.php', {
                     id: id
                 })
@@ -327,7 +327,7 @@ export default {
                     console.log(error)
                 });
         },
-        getCountCodesUser(){
+        getCountCodesUser() {
             const self = this
             this.$http.post('/api/usersPeriod.php', {
                     count_codes: this.count_codes
@@ -471,12 +471,28 @@ export default {
     },
     mounted() {
         const self = this
-        this.$http.get('/api/dba3b523660d42d18441c0161e8431a8.php')
-            .then(function(response) {
-                self.users = response.data.users
-                self.codes = response.data.codes
-                self.countFeedback = response.data.count_feedback
-                self.top3 = response.data.top3
+        let uid = localStorage.getItem('uid')
+        let token = localStorage.getItem('t')
+
+        this.$http.post('/api/checkAdm.php', {
+                uid: uid,
+                token: token
+            })
+            .then(function(res) {
+                if (res.data.status === 'ok') {
+                    self.$http.get('/api/dba3b523660d42d18441c0161e8431a8.php')
+                        .then(function(response) {
+                            self.users = response.data.users
+                            self.codes = response.data.codes
+                            self.countFeedback = response.data.count_feedback
+                            self.top3 = response.data.top3
+                        })
+                        .catch(function(error) {
+                            console.log(error)
+                        });
+                } else {
+                    self.$router.push('/')
+                }
             })
             .catch(function(error) {
                 console.log(error)

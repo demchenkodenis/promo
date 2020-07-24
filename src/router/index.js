@@ -11,6 +11,7 @@ import checkMail from '../components/checkMail.vue'
 import Registr from '../components/Registr.vue'
 import LoginReg from '../views/LoginReg.vue'
 import Winner from '../views/Winner.vue'
+import Adm from '../components/Adm.vue'
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ const routes = [{
         path: '/checkMail',
         name: 'checkMail',
         component: checkMail
+    },
+    {
+        path: '/adm',
+        name: 'adm',
+        component: Adm
     },
     {
         path: '/secure',
