@@ -55,7 +55,7 @@ export default {
 <style scoped>
 #promocode {
     text-align: center;
-    font-size: 48px;
+    font-size: 3rem;
     margin: 10px 0;
     border: 3px solid #0e4194;
 }

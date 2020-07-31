@@ -24,8 +24,6 @@
                         <p class="text-center">Розыгрыш состоится через:</p>
                         <p>
                             <vue-countdown-timer
-                                @start_callback="startCallBack('event started')"
-                                @end_callback="endCallBack('event ended')"
                                 :start-time="startTime"
                                 :end-time="endTime"
                                 :interval="1000"
@@ -163,12 +161,6 @@ export default {
                 .catch(function(error) {
                     console.log(error)
                 });
-        },
-        startCallBack: function (msg) {
-            console.log(msg)
-        },
-          endCallBack: function (msg) {
-            console.log(msg)
         }
     },
     mounted() {

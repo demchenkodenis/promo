@@ -141,14 +141,9 @@
                         Информация о пользователе:
                     </div>
                     <div class="card-body">
+                        <p><i class="fas fa-user"></i> {{ userInfo.name }} {{ userInfo.lastname }}</p>
                         <p>
-                            <span>Имя:</span> {{ userInfo.name }}
-                        </p>
-                        <p>
-                            <span>Фамилия:</span> {{ userInfo.lastname }}
-                        </p>
-                        <p>
-                            <span v-if="!isEditingEmail">E-mail: {{ userInfo.email }}</span>
+                            <span v-if="!isEditingEmail"><i class="far fa-envelope"></i> {{ userInfo.email }}</span>
                             <input type="text" class="form-control" v-model="userInfo.email" v-value="userInfo.email" v-else>
                             <button class="btn btn-primary btn-sm" @click="editEmail" v-if="!isEditingEmail">
                                 <i class="fas fa-pencil-alt"></i>
@@ -157,7 +152,7 @@
                             <button class="btn btn-danger btn-sm" @click="cancelEmail" v-if="isEditingEmail"><i class="far fa-window-close"></i></button>
                         </p>
                         <p>
-                            <span v-if="!isEditingPhone">Телефон: {{ userInfo.phone }}</span>
+                            <span v-if="!isEditingPhone"><i class="fas fa-phone-alt"></i> {{ userInfo.phone }}</span>
                             <input type="text" class="form-control" v-model="userInfo.phone" v-value="userInfo.phone" v-else>
                             <button class="btn btn-primary btn-sm" @click="editPhone" v-if="!isEditingPhone">
                                 <i class="fas fa-pencil-alt"></i>
@@ -165,16 +160,15 @@
                             <button class="btn btn-success btn-sm" @click="savePhone" v-if="isEditingPhone"><i class="fas fa-check"></i></button>
                             <button class="btn btn-danger btn-sm" @click="cancelPhone" v-if="isEditingPhone"><i class="far fa-window-close"></i></button>
                         </p>
-                        <p><span>Дата регистрация:</span> {{ userInfo.date_registration }}</p>
+                        <p><i class="far fa-calendar-alt"></i> {{ userInfo.date_registration }}</p>
                         <p v-if="userInfo.status == 1">
-                            <span>Статус аккаунта:</span> Активирован
-                            <button class="btn btn-danger" @click="ban">БАН!</button>
+                            <span>Статус аккаунта:</span> Активирован&nbsp;&nbsp;&nbsp;<button class="btn btn-danger" @click="ban">БАН!</button>
                         </p>
                         <p v-else-if="userInfo.status == 2">
                             <span>Статус аккаунта:</span> Забанен
                         </p>
                         <p v-else>
-                            <span>Статус аккаунта:</span> Не активирован
+                            <span>Статус аккаунта:</span> Не активирован&nbsp;&nbsp;&nbsp;
                             <button class="btn btn-primary" @click="activate">Активировать</button>
                         </p>
                         <p>{{ msgActivate }}</p>
@@ -261,35 +255,61 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <form class="form-inline" @submit.prevent="getCountCodesUser">
-                    <div class="form-group mb-2">
-                        <label>Количество кодов</label>
-                        <input type="text" class="form-control" v-model="count_codes">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Количество зарегистрированных кодов за период</p>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
-                </form>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getCountCodesUser">
+                            <div class="form-group mb-2">
+                                <label>Количество кодов</label>
+                                <input type="text" class="form-control" v-model="count_codes">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                        <table class="table table-hover table-responsive">
+                            <tr v-if="list_users_period.length > 0">
+                                <td>#</td>
+                                <td>Телефон</td>
+                                <td>Кол-во кодов</td>
+                                <td>Исключить</td>
+                                <td>Статус</td>
+                            </tr>
+                            <tr v-for="(item, index) in list_users_period" :key="item.id">
+                                <td>{{ index + 1 }}</td>
+                                <td>{{ item.phone }}</td>
+                                <td>{{ item.codes }}</td>
+                                <td><button class="btn btn-danger" @click="banUserPeriod(item.id)"><i class="far fa-window-close"></i></button></td>
+                                <td v-if="item.ban != null" class="alert alert-danger">Не участвует</td>
+                                <td v-else class="alert alert-success">Участвует</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
-                <table class="table table-hover table-responsive">
-                    <tr v-if="list_users_period.length > 0">
-                        <td>#</td>
-                        <td>Фамилия</td>
-                        <td>Телефон</td>
-                        <td>Кол-во кодов</td>
-                        <td>Исключить</td>
-                        <td>Статус</td>
-                    </tr>
-                    <tr v-for="(item, index) in list_users_period" :key="item.id">
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ item.lastname }}</td>
-                        <td>{{ item.phone }}</td>
-                        <td>{{ item.codes }}</td>
-                        <td><button class="btn btn-danger" @click="banUserPeriod(item.id)">Бан</button></td>
-                        <td v-if="item.ban != null" class="alert alert-danger">Не участвует</td>
-                        <td v-else class="alert alert-success">Участвует</td>
-                    </tr>
-                </table>
+                <div class="card">
+                    <div class="card-header">
+                        <p>Кому принадлежит код {{ promocode }}</p>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline" @submit.prevent="getUserPromo">
+                            <div class="form-group mb-2">
+                                <label>Введите код</label>
+                                <input type="text" class="form-control" v-model="promocode" @input="promo = $event.target.value.toUpperCase()" :maxlength="10">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+                        </form>
+                        <div v-if="itsUser">
+                            <p><i class="fas fa-user"></i> {{ itsUser.name }} {{ itsUser.lastname }}</p>
+                            <p><i class="fas fa-phone-alt"></i> {{ itsUser.phone }}</p>
+                            <p><i class="far fa-envelope"></i> {{ itsUser.email }}</p>
+                            <p><i class="far fa-calendar-alt"></i> {{ itsUser.date_registration }}</p>
+                            <p><button class="btn btn-warning" @click="excludeUser(itsUser.id)">Исключить из участия</button></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -320,10 +340,41 @@ export default {
             firstDate: '',
             lastDate: '',
             isEditingEmail: false,
-            isEditingPhone: false
+            isEditingPhone: false,
+            promocode: '',
+            itsUser: ''
         }
     },
     methods: {
+        excludeUser(id) {
+            this.$http.post('/api/banUserPeriod.php', {
+                    id: id
+                })
+                .then(function(response) {
+                    console.log(response.data)
+                    alert('Пользователь исключен из участия');
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
+        getUserPromo() {
+            const self = this
+            this.$http.post('/api/getCodeUser.php', {
+                    code: this.promocode
+                })
+                .then(function(response) {
+                    if (response.data.status == 'ok') {
+                        self.itsUser = response.data.user
+                    } else {
+                        alert('Этот код еще не введен');
+                    }
+                    console.log(self.itsUser)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        },
         banUserPeriod(id) {
             this.$http.post('/api/banUserPeriod.php', {
                     id: id

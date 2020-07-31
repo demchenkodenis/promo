@@ -16,7 +16,7 @@
                             <div>
                                 <h3 class="text-center start-action blue-color font-Pacifico">До начала следующего розыгрыша осталось:</h3>
                                 <p>
-                                    <vue-countdown-timer @start_callback="startCallBack('event started')" @end_callback="endCallBack('event ended')" :start-time="startTime" :end-time="endTime" :interval="1000" :start-label="''" :end-label="''" label-position="begin" :end-text="'Event ended!'" :day-txt="'дней'" :hour-txt="'часов'" :minutes-txt="'минут'" :seconds-txt="'секунд'">
+                                    <vue-countdown-timer :start-time="startTime" :end-time="endTime" :interval="1000" :start-label="''" :end-label="''" label-position="begin" :end-text="'Event ended!'" :day-txt="'дней'" :hour-txt="'часов'" :minutes-txt="'минут'" :seconds-txt="'секунд'">
                                         <template slot="start-label" slot-scope="scope">
                                             <span style="color: red" v-if="scope.props.startLabel !== '' && scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.startLabel}}:</span>
                                             <span style="color: blue" v-if="scope.props.endLabel !== '' && !scope.props.tips && scope.props.labelPosition === 'begin'">{{scope.props.endLabel}}:</span>
@@ -237,12 +237,6 @@ export default {
                 this.iphonexrRotate = 0
                 this.opacityPrize = 0
             }
-        },
-        startCallBack: function(msg) {
-            console.log(msg)
-        },
-        endCallBack: function(msg) {
-            console.log(msg)
         }
     }
 }
