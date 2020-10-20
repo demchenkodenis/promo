@@ -1,5 +1,12 @@
 <template>
     <div class="container" id="stats">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-default btn-block btn-lg">
+                    <a href="#/winner">Перейти к проведению розыгрыша</a>
+                </button>
+            </div>
+        </div>
         <div class="jumbotron">
             <h1 class="text-center" style="font-size: 3rem;">ТОП Участников</h1>
             <div id="top">
@@ -285,29 +292,6 @@
                                 <td v-else class="alert alert-success">Участвует</td>
                             </tr>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <p>Кому принадлежит код {{ promocode }}</p>
-                    </div>
-                    <div class="card-body">
-                        <form class="form-inline" @submit.prevent="getUserPromo">
-                            <div class="form-group mb-2">
-                                <label>Введите код</label>
-                                <input type="text" class="form-control" v-model="promocode" @input="promo = $event.target.value.toUpperCase()" :maxlength="10">
-                            </div>
-                            <button type="submit" class="btn btn-primary mb-2">Отправить</button>
-                        </form>
-                        <div v-if="itsUser">
-                            <p><i class="fas fa-user"></i> {{ itsUser.name }} {{ itsUser.lastname }}</p>
-                            <p><i class="fas fa-phone-alt"></i> {{ itsUser.phone }}</p>
-                            <p><i class="far fa-envelope"></i> {{ itsUser.email }}</p>
-                            <p><i class="far fa-calendar-alt"></i> {{ itsUser.date_registration }}</p>
-                            <p><button class="btn btn-warning" @click="excludeUser(itsUser.id)">Исключить из участия</button></p>
-                        </div>
                     </div>
                 </div>
             </div>

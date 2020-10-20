@@ -121,6 +121,23 @@ export default {
         }
     },
     mounted() {
+        const self = this
+        let uid = localStorage.getItem('uid')
+        let token = localStorage.getItem('t')
+
+        this.$http.post('/api/checkAdm.php', {
+                uid: uid,
+                token: token
+            })
+            .then(function(res) {
+                if (res.data.status != 'ok') {
+                    self.$router.push('/')
+                }
+            })
+            .catch(function(error) {
+                console.log(error)
+            });
+
         this.currentDate()
         this.$http.get('/api/getCountDown.php')
             .then(function(response) {
@@ -132,7 +149,7 @@ export default {
                 console.log(error)
             })
     }
-}
+} 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
